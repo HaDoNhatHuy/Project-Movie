@@ -10,6 +10,13 @@ namespace Database_Movie.EF
     public class MovieContext : DbContext
     {
         public MovieContext(DbContextOptions<MovieContext> options) : base(options) { }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Credential>()
+                        .HasKey(c => new { c.GroupId, c.RoleId });   // Chỉ định khóa chính phức hợp
+
+            base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Ads> Advs { get; set; }
