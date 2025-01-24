@@ -1,0 +1,59 @@
+﻿@using Database_Movie.EF
+@model About
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow-lg border-0 rounded">
+    <div class="card-header">
+        @* <strong>Thêm</strong> Giới thiệu *@
+        <h4 class="m-0">Cập nhật Giới Thiệu</h4>
+    </div>
+    <form asp-action="Create" asp-controller="About" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <input type="hidden" asp-for="AboutId"/>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="Name" class=" form-label fw-bold ">Tên</label>
+                    <input type="text" asp-for="Name" placeholder="Vui lòng nhập tên giới thiệu" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Image" class=" form-label fw-bold">Ảnh</label>
+                    <input type="file" asp-for="Image" id="Image" name="Image" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-12">
+                    <label for="Description" class="form-label fw-bold">Mô tả</label>
+                    <textarea asp-for="Description" id="Description" name="Description" class="form-control shadow-sm"></textarea>
+                </div>
+                <div class="col-12">
+                    <label for="Status" class="form-label fw-bold">Trạng thái</label>
+                    <select asp-for="Status" id="Status" class="form-control shadow-sm" asp-items="ViewBag.Categories" required>
+                        <option value="">---- Chọn trạng thái ----</option>
+                        <option value="true">Kích hoạt</option>
+                        <option value="false">Huỷ kích hoạt</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button type="submit" class="btn btn-success shadow-sm">
+                <i class="fa fa-check-circle"></i> Lưu
+            </button>
+            <button type="reset" class="btn btn-warning shadow-sm text-white">
+                <i class="fa fa-undo"></i> Làm lại
+            </button>
+            <a asp-action="Index" asp-controller="About" class="btn btn-secondary shadow-sm">
+                <i class="fa fa-arrow-left"></i> Trở lại
+            </a>
+        </div>
+    </form>
+</div>
+@section Js {
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector("#Description"))
+            .catch(error => console.error(error));
+    </script>
+}
+

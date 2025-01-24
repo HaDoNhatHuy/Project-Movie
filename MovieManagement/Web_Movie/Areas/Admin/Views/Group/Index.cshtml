@@ -7,7 +7,7 @@
 }
 <div class="col-md-12">
     <!-- DATA TABLE -->
-    <h3 class="title-5 m-b-35">@ViewData["Title"]</h3>
+    <h3 class="title-5 m-b-35 text-center text-primary font-weight-bold">@ViewData["Title"]</h3>
     <div class="table-data__tool">
         <div class="table-data__tool-left">
             <div class="rs-select2--light rs-select2--md">
@@ -53,7 +53,7 @@
                 <tr>
                     <th>#</th>
                     <th>Tên nhóm quyền</th>
-                    <th>Chức năng</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -64,13 +64,13 @@
                         <td class="desc">@item.Name</td>
                         <td>
                             <div class="table-data-feature">
-                                <a asp-action="Edit" asp-route-id="@item.GroupId" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                <a asp-action="Edit" asp-route-id="@item.GroupId" class="btn btn-warning btn-sm mx-1" data-toggle="tooltip" data-placement="top" title="Edit">
                                     <i class="zmdi zmdi-edit"></i>
                                 </a>
-                                <a asp-action="Delete" asp-route-id="@item.GroupId" class="item confirmDeletion" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a asp-action="Delete" asp-route-id="@item.GroupId" class="btn btn-danger btn-sm mx-1 confirmDeletion" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i class="zmdi zmdi-delete"></i>
                                 </a>
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                <button class="btn btn-success btn-sm mx-1" data-toggle="tooltip" data-placement="top" title="More">
                                     <i class="zmdi zmdi-more"></i>
                                 </button>
                             </div>

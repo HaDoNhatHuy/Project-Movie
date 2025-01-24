@@ -27,6 +27,17 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\balloonpanel\skins\kama\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\balloonpanel\skins\moono-lisa\images\hidpi\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\balloonpanel\skins\moono\images\hidpi\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\balloontoolbar\skins\kama\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\balloontoolbar\skins\moono-lisa\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\balloontoolbar\skins\moono\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\easyimage\dialogs\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\easyimage\styles\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\plugins\imagebase\styles\" />
+    <Folder Include="wwwroot\assets\admin\ckeditor\samples\old\easyimage\" />
+    <Folder Include="wwwroot\assets\admin\ckfinder\core\connector\aspx\files\" />
   </ItemGroup>
 
 </Project>
