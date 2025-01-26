@@ -57,7 +57,7 @@ namespace Web_Movie.Areas.Admin.Controllers
             return View(aboutInfo);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(About about, IFormFile Image)
+        public async Task<IActionResult> Edit(About about, IFormFile Image, Guid id)
         {
             var aboutExist = await _context.Abouts.Where(i => i.AboutId == about.AboutId).FirstOrDefaultAsync();
             if (aboutExist == null)

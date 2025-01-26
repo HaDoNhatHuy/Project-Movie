@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-12">
                     <label for="Status" class="form-label fw-bold">Trạng thái</label>
-                    <select asp-for="Status" id="Status" class="form-control shadow-sm" asp-items="ViewBag.Categories" required>
+                    <select asp-for="Status" id="Status" class="form-control shadow-sm" @* asp-items="ViewBag.Categories" *@ required>
                         <option value="">---- Chọn trạng thái ----</option>
                         <option value="true">Kích hoạt</option>
                         <option value="false">Huỷ kích hoạt</option>
