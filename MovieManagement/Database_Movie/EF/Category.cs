@@ -15,13 +15,13 @@ namespace Database_Movie.EF
         public Guid CategoryId { get; set; }
         [StringLength(50)]
         public string CategoryName { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
         [ForeignKey("ParentId")]
         public Guid? ParentId { get; set; }
         public Category? Parent { get; set; }
         public int? DisplayOrder { get; set; }
         [StringLength(250)]
-        public string SeoTitle { get; set; }
+        public string? SeoTitle { get; set; }
         public string? MetaKeywords { get; set; }
         public string? MetaDescription { get; set; }
         public DateTime? CreatedDate { get; set; }

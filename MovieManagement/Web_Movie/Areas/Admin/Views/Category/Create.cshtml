@@ -1,0 +1,15 @@
+﻿@using Database_Movie.EF
+@model Category
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Js {
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector("#Description"))
+            .catch(error => console.error(error));
+    </script>
+}
+
