@@ -60,7 +60,7 @@ namespace Web_Movie.Areas.Admin.Controllers
             _context.Categories.Add(categoryModel);
             await _context.SaveChangesAsync();
             TempData["success"] = "Thêm thành công";
-            return RedirectToAction("Index");
+            return Redirect(Request.Headers["Referer"]); //quay lại trang ngay trước đó
         }
         public IActionResult Edit(Guid? parentId, Guid id)
         {
@@ -88,7 +88,7 @@ namespace Web_Movie.Areas.Admin.Controllers
             _context.Categories.Update(categoryExist);
             await _context.SaveChangesAsync();
             TempData["success"] = "Cập nhật thành công";
-            return RedirectToAction("Index");
+            return Redirect(Request.Headers["Referer"]); //quay lại trang ngay trước đó
         }
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id)

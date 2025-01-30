@@ -1,0 +1,51 @@
+﻿@using Database_Movie.EF
+@model Ads
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow-lg border-0 rounded">
+    <div class="card-header">
+        @* <strong>Thêm</strong> Giới thiệu *@
+        <h4 class="m-0">Thêm Quảng Cáo</h4>
+    </div>
+    <form asp-action="Create" asp-controller="Ads" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="AdsName" class=" form-label fw-bold ">Tên quảng cáo</label>
+                    <input type="text" asp-for="AdsName" placeholder="Vui lòng nhập tên quảng cáo" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="AdsImage" class=" form-label fw-bold">Ảnh</label>
+                    <input type="file" asp-for="AdsImage" id="AdsImage" name="AdsImage" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-12">
+                    <label for="AdsUrl" class=" form-label fw-bold">Đường dẫn</label>
+                    <input type="text" asp-for="AdsUrl" placeholder="Vui lòng nhập đường dẫn" class="form-control shadow-sm" required />
+                </div>
+                <div class="col-12">
+                    <label for="Status" class="form-label fw-bold">Trạng thái</label>
+                    <select asp-for="Status" id="Status" class="form-control shadow-sm" @* asp-items="ViewBag.Categories" *@ required>
+                        <option value="">---- Chọn trạng thái ----</option>
+                        <option value="true">Kích hoạt</option>
+                        <option value="false">Huỷ kích hoạt</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button type="submit" class="btn btn-success shadow-sm">
+                <i class="fa fa-check-circle"></i> Lưu
+            </button>
+            <button type="reset" class="btn btn-warning shadow-sm text-white">
+                <i class="fa fa-undo"></i> Làm lại
+            </button>
+            <a asp-action="Index" asp-controller="Ads" class="btn btn-secondary shadow-sm">
+                <i class="fa fa-arrow-left"></i> Trở lại
+            </a>
+        </div>
+    </form>
+</div>
+
