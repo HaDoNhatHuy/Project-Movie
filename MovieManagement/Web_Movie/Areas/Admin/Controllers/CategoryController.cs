@@ -12,15 +12,13 @@ namespace Web_Movie.Areas.Admin.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(Guid? ParentId)
+        public IActionResult Index(Guid? parentId)
         {
-            if (ParentId == Guid.Empty)
-                ParentId = null;
+            var categories = parentId == null
+                ? _context.Categories.Where(c => c.ParentId == null).ToList()  // Danh mục gốc
+                : _context.Categories.Where(c => c.ParentId == parentId).ToList();  // Danh mục con của parentId
 
-            var categories = await _context.Categories
-                .Where(c => c.ParentId == ParentId)
-                .ToListAsync();
-
+            // Trả về danh sách categories cho view
             return View(categories);
         }
 

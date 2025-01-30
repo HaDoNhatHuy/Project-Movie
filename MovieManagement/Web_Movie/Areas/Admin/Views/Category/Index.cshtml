@@ -66,7 +66,7 @@
                         <td>@key</td>
                         @* <td class="desc"><a asp-action="GetChildCategory" asp-controller="Category" asp-route-parentId="@item.ParentId">@item.CategoryName</a></td> *@
                         <td>
-                            <a href="#" class="category-link" data-id="@item.CategoryId">
+                            <a href="@Url.Action("Index", "Category", new { parentId = item.CategoryId })" class="category-link" data-id="@item.CategoryId">
                                 @item.CategoryName
                             </a>
                         </td>
@@ -154,49 +154,21 @@
         });
     </script>
     <script>
-           $(document).ready(function () {
+                   $(document).ready(function () {
             $("#myTable").on("click", ".category-link", function (e) {
                 e.preventDefault();
                 var parentId = $(this).data("id");
+                var url = "/Admin/Category";  // Default to Category gốc
 
-                $.ajax({
-                    url: "/Admin/Category/GetChildCategory",
-                    type: "GET",
-                    data: { parentId: parentId },
-                    success: function (data) {
-                        if (data.length > 0) {
-                            var html = "";
-                            data.forEach(function (category) {
-                                html += `<tr>
-                                            <td><strong>${category.categoryId}</strong></td>
-                                            <td>
-                                                <a href="#" class="category-link" data-id="${category.categoryId}">
-                                                    ${category.categoryName}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="category-link" data-id="${category.status}">
-                                                    ${category.status}
-                                                </a>
-                                            </td>
-                                            <td>${category.createdDate}</td>
-                                            <td>
-                                                <a href="/Admin/Category/Edit/${category.categoryId}" class="btn btn-warning btn-sm">Sửa</a>
-                                                <a href="/Admin/Category/Delete/${category.categoryId}" class="btn btn-danger btn-sm">Xóa</a>
-                                            </td>
-                                         </tr>`;
-                            });
+                // Nếu là danh mục cha (có parentId), đi tới trang có parentId
+                if (parentId) {
+                    url = "/Admin/Category?parentId=" + parentId;
+                }
 
-                            $("#categoryBody").html(html);
-                        } else {
-                            alert("Không có danh mục con!");
-                        }
-                    },
-                    error: function () {
-                        alert("Lỗi khi tải danh mục con.");
-                    }
-                });
+                // Chuyển hướng đến URL mới
+                window.location.href = url;
             });
         });
+
     </script>
 }
