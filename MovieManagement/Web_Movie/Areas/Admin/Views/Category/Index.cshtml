@@ -31,7 +31,7 @@
             </button>
         </div>
         <div class="table-data__tool-right">
-            <a asp-action="Create" asp-controller="Category" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a asp-action="Create" asp-controller="Category" asp-route-parentId="@ViewBag.ParentId" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-plus"></i>Thêm chuyên mục
             </a>
             <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
@@ -81,7 +81,7 @@
                         <td class="desc">@item.CreatedDate</td>
                         <td>
                             <div class="table-data-feature">
-                                <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning btn-sm mx-1" data-toggle="tooltip" data-placement="top" title="Edit">
+                                <a asp-action="Edit" asp-route-id="@item.CategoryId" asp-route-parentId="@ViewBag.ParentId" class="btn btn-warning btn-sm mx-1" data-toggle="tooltip" data-placement="top" title="Edit">
                                     <i class="zmdi zmdi-edit"></i>
                                 </a>
                                 <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger btn-sm mx-1 confirmDeletion" data-toggle="tooltip" data-placement="top" title="Delete">
@@ -154,7 +154,7 @@
         });
     </script>
     <script>
-                   $(document).ready(function () {
+            $(document).ready(function () {
             $("#myTable").on("click", ".category-link", function (e) {
                 e.preventDefault();
                 var parentId = $(this).data("id");
