@@ -12,56 +12,61 @@
                 </li>
                 <li>
                     <a asp-action="Index" asp-controller="Movie">
-                        <i class="fas fa-chart-bar"></i>Phim
+                        <i class="fas fa-film"></i>Phim
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
-                        <i class="fas fa-table"></i>Thể loại
+                    <a asp-action="Index" asp-controller="Category" asp-route-parentId="1cea847e-985f-4688-8912-7a261656fdc4">
+                        <i class="fas fa-tags"></i>Thể loại
                     </a>
                 </li>
                 <li>
-                    <a href="map.html">
-                        <i class="fas fa-map-marker-alt"></i>Tin tức
+                    <a asp-action="Index" asp-controller="News">
+                        <i class="fas fa-newspaper"></i>Tin tức
                     </a>
                 </li>
                 <li>
-                    <a href="form.html">
-                        <i class="far fa-check-square"></i>Quốc gia
+                    <a asp-action="Index" asp-controller="Country">
+                        <i class="fas fa-globe"></i>Quốc gia
                     </a>
                 </li>
                 <li>
                     <a asp-action="Index" asp-controller="Group">
-                        <i class="fas fa-calendar-alt"></i>Nhóm quyền
+                        <i class="fas fa-users"></i>Nhóm quyền
                     </a>
                 </li>
                 <li>
-                    <a href="calendar.html">
-                        <i class="fas fa-calendar-alt"></i>Người dùng
+                    <a asp-action="Index" asp-controller="User">
+                        <i class="fas fa-user"></i>Người dùng
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Comment">
+                        <i class="fas fa-comments"></i>Bình luận
                     </a>
                 </li>
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Khác
+                        <i class="fas fa-tasks"></i>Khác
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a href="index.html">Phân quyền</a>
+                            <a asp-action="Index" asp-controller="Category">Chuyên mục</a>
                         </li>
                         <li>
-                            <a href="index2.html">Banner</a>
+                            <a asp-action="Index" asp-controller="Banner">Banner</a>
                         </li>
                         <li>
-                            <a href="index3.html">Giới thiệu</a>
+                            <a asp-action="Index" asp-controller="About">Giới thiệu</a>
                         </li>
                         <li>
-                            <a href="index4.html">Liên hệ</a>
+                            <a asp-action="Index" asp-controller="Contact">Liên hệ</a>
                         </li>
                         <li>
-                            <a href="index4.html">Quảng cáo</a>
+                            <a asp-action="Index" asp-controller="Ads">Quảng cáo</a>
                         </li>
                         <li>
-                            <a href="index4.html">Thư góp ý</a>
+                            <a asp-action="Index" asp-controller="Feedback">Thư góp ý</a>
                         </li>
                     </ul>
                 </li>
