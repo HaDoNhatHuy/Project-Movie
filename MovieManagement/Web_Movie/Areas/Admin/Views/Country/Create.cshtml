@@ -1,0 +1,42 @@
+﻿@using Database_Movie.EF
+@model Country
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <strong>Thêm</strong> Quốc gia
+    </div>
+    <form asp-action="Create" asp-controller="Country" method="post" class="form-horizontal">
+        <div class="card-body card-block">
+            <div class="row form-group">
+                <div class="col-12">
+                    <label for="Name" class=" form-label fw-bold ">Tên</label>
+                    <input type="text" asp-for="Name" placeholder="Vui lòng nhập tên quốc gia" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-12">
+                    <label for="Status" class="form-label fw-bold">Trạng thái</label>
+                    <select asp-for="Status" id="Status" class="form-control shadow-sm" @* asp-items="ViewBag.Categories" *@ required>
+                        <option value="">---- Chọn trạng thái ----</option>
+                        <option value="true">Kích hoạt</option>
+                        <option value="false">Huỷ kích hoạt</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-dot-circle-o"></i> Submit
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+            <a asp-action="Index" asp-controller="Country" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Trở lại
+            </a>
+        </div>
+    </form>
+</div>
+
