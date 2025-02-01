@@ -19,8 +19,8 @@ namespace Database_Movie.EF
         public string Name { get; set; }
         public string Content { get; set; }
         [ForeignKey("UserId")]
-        public Guid UserId { get; set; }
-        public User User { get; set; }
+        public string? UserId { get; set; }
+        public AppUserModel? AppUserModel { get; set; }
         public bool Status { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string? CreatedBy { get; set; }

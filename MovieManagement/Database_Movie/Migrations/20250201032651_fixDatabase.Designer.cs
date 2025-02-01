@@ -4,6 +4,7 @@ using Database_Movie.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20250201032651_fixDatabase")]
+    partial class fixDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,19 +181,11 @@ namespace Database_Movie.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -404,6 +399,23 @@ namespace Database_Movie.Migrations
                     b.HasKey("CountryId");
 
                     b.ToTable("Country");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.Credential", b =>
+                {
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(0);
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("GroupId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Credential");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Feedback", b =>
@@ -647,6 +659,21 @@ namespace Database_Movie.Migrations
                     b.ToTable("News");
                 });
 
+            modelBuilder.Entity("Database_Movie.EF.Role", b =>
+                {
+                    b.Property<Guid>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Role");
+                });
+
             modelBuilder.Entity("Database_Movie.EF.Tag", b =>
                 {
                     b.Property<Guid>("TagId")
@@ -868,6 +895,25 @@ namespace Database_Movie.Migrations
                     b.Navigation("Movie");
                 });
 
+            modelBuilder.Entity("Database_Movie.EF.Credential", b =>
+                {
+                    b.HasOne("Database_Movie.EF.Group", "Group")
+                        .WithMany("Credentials")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Database_Movie.EF.Role", "Role")
+                        .WithMany("Credentials")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("Database_Movie.EF.Movie", b =>
                 {
                     b.HasOne("Database_Movie.EF.Category", "Category")
@@ -965,12 +1011,19 @@ namespace Database_Movie.Migrations
 
             modelBuilder.Entity("Database_Movie.EF.Group", b =>
                 {
+                    b.Navigation("Credentials");
+
                     b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Movie", b =>
                 {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.Role", b =>
+                {
+                    b.Navigation("Credentials");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Trailer", b =>

@@ -14,7 +14,6 @@ namespace Database_Movie.EF
         [Key]
         public Guid GroupId { get; set; }
         public string Name { get; set; }
-        public ICollection<Credential> Credentials { get; set; } = new HashSet<Credential>();
-        public ICollection<User> Users { get; set; } = new HashSet<User>();
+        public ICollection<AppUserModel> Users { get; set; } = new HashSet<AppUserModel>();
     }
 }
