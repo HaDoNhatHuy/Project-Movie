@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>OneMovie Website xem phim hoàn toàn miễn phí</title><!-- for-mobile-apps -->
@@ -79,15 +78,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=551366955654782&autoLogAppEvents=1"></script>
 
 </head>
-
 <body>
 
     <!-- header -->
     <div class="header">
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
             <div class="w3layouts_logo">
                 <!-- logo -->
                 <a href="/Home/Index"><h1>One<span>Movies</span></h1></a>
+                @* <a href="/Home/Index" class="text-white text-decoration-none fs-3 fw-bold">One<span class="text-danger">Movies</span></a> *@
             </div>
             <div class="w3_search">
                 <form name="timkiem" action="/Home/Search">
@@ -95,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <input type="submit" name="submit" value="Tìm kiếm">
                 </form>
             </div>
-
+            
             @{
                 // Html.RenderAction("ToolsTop", "UserT");
             }
@@ -120,11 +119,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- nav -->
     @Html.Partial("_MenuMainPartial")
 
-
     <!-- //nav -->
     <!-- banner -->
     @RenderSection("slide", required: false)
-
 
     <!-- //banner -->
     <!--facebook live-->
@@ -139,7 +136,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul>
         </nav>
     </div>
-
     @RenderBody()
     <!-- footer -->
     <div class="footer">
@@ -165,9 +161,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <p>&copy; 2019 One Movies. All rights reserved </p>
             </div>
 
-            @{
-                // Html.RenderAction("MenuBottom", "M");
-            }
+            @* @await Html.PartialAsync("_MenuBottomPartial") *@
+
             <div class="clearfix"> </div>
         </div>
     </div>
@@ -209,7 +204,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     @RenderSection("jsFooter", required: false)
     <!-- //here ends scrolling icon -->
     <!--Live Chat FaceBook-->
-
 
 </body>
 </html>

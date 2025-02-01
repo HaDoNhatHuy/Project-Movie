@@ -14,9 +14,9 @@ namespace Database_Movie.EF
         [Key]
         public Guid MovieId { get; set; }
         public string MovieName { get; set; }
-        public string Image { get; set; }
+        public string? Image { get; set; }
         [Column(TypeName = "xml")]
-        public string MoreImages { get; set; }
+        public string? MoreImages { get; set; }
         [StringLength(50)]
         public string Actors { get; set; }
         [StringLength(50)]
@@ -25,12 +25,13 @@ namespace Database_Movie.EF
         [Column(TypeName = "text")]
         public string Time { get; set; }
         public int? Year { get; set; }
-        public string Country { get; set; }
         public string MovieLink { get; set; }
-        public string TrailerLink { get; set; }
         [ForeignKey("CategoryId")]
         public Guid? CategoryId { get; set; }
         public Category? Category { get; set; }
+        [ForeignKey("CountryId")]
+        public Guid? CountryId { get; set; }
+        public Country Country { get; set; }
         public int? Rating { get; set; }
         [ForeignKey("TrailerId")]
         public Guid? TrailerId { get; set; }
@@ -43,8 +44,7 @@ namespace Database_Movie.EF
         public string? MetaKeywords { get; set; }
         public string? MetaDescription { get; set; }
         public bool Status { get; set; }
-        public DateTime? TopHot { get; set; }
-        public int? CountryId { get; set; }
+        public DateTime? TopHot { get; set; }       
         public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 }

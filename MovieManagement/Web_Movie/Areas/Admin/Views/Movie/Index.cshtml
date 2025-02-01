@@ -1,0 +1,205 @@
+﻿@using Database_Movie.EF
+@model IEnumerable<Movie>
+@{
+    ViewData["Title"] = "DANH SÁCH PHIM";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int key = 1;
+}
+<div class="col-md-12">
+    <!-- DATA TABLE -->
+    @* <h3 class="title-5 m-b-35">@ViewData["Title"]</h3> *@
+    <h3 class="title-5 m-b-35 text-center text-primary font-weight-bold">@ViewData["Title"]</h3>
+
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+            <div class="rs-select2--light rs-select2--md">
+                <select class="js-select2" name="property">
+                    <option selected="selected">All Properties</option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                </select>
+                <div class="dropDownSelect2"></div>
+            </div>
+            <div class="rs-select2--light rs-select2--sm">
+                <select class="js-select2" name="time">
+                    <option selected="selected">Today</option>
+                    <option value="">3 Days</option>
+                    <option value="">1 Week</option>
+                </select>
+                <div class="dropDownSelect2"></div>
+            </div>
+            <button class="au-btn-filter">
+                <i class="zmdi zmdi-filter-list"></i>filters
+            </button>
+        </div>
+        <div class="table-data__tool-right">
+            <a asp-action="Create" asp-controller="Movie" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus"></i>Thêm phim
+            </a>
+            <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                <select id="exportDropdown" class="js-select2" name="type">
+                    <option selected="selected">Export</option>
+                    <option value="copy">Copy</option>
+                    <option value="csv">CSV</option>
+                    <option value="excel">Excel</option>
+                    <option value="pdf">PDF</option>
+                    <option value="print">Print</option>
+                </select>
+
+                <div class="dropDownSelect2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive table-responsive-data2">
+        <table class="table table-bordered table-hover table-striped text-center" id="myTable">
+
+            <thead>
+                <tr>
+                    <th class="align-middle">#</th>
+                    <th class="align-middle">Tên phim</th>
+                    <th class="align-middle">Ảnh</th>
+                    @* <th class="align-middle">Đạo diễn</th> *@
+                    @* <th class="align-middle">Diễn Viên</th> *@
+                    @* <th class="align-middle">Mô Tả</th> *@
+                    <th class="align-middle">Thời lượng</th>
+                    @* <th class="align-middle">Quốc gia</th> *@
+                    @* <th class="align-middle">Năm ra mắt</th> *@
+                    @* <th class="align-middle">Link Phim</th> *@
+                    @* <th class="align-middle">Link Trailer</th> *@
+                    <th class="align-middle">Thể loại</th>
+                    @* <th class="align-middle">Rating</th> *@
+                    @* <th class="align-middle">Đánh giá</th> *@
+                    <th class="align-middle">Lượt xem</th>
+                    @* <th class="align-middle">Top</th> *@
+                    <th class="align-middle">Trạng thái</th>
+                    <th class="align-middle"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0 || Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr class="align-middle">
+                            <td>@key</td>
+                            <td>@item.MovieName</td>
+                            <td><img src="/assets/admin/images/MovieImages/@item.Image" style="width:100px; border-radius: 5px;" /></td>
+                            @* <td>@item.Directors</td> *@
+                            @* <td>@item.Actors</td> *@
+                            @* <td>@Html.Raw(item.Description)</td> *@
+                            <td>@item.Time</td>
+                            @* <td>@item.Country</td> *@
+                            @* <td>@item.Year</td> *@
+                            @* <td><a href="@item.MovieLink"></a>@item.MovieLink</td> *@
+                            @* <td><a href="@item.TrailerLink"></a>@item.TrailerLink</td> *@
+                            <td>@item.Category?.CategoryName</td>
+                            @* <td>@item.Rating</td> *@
+                            @* <td>@item.Comments</td> *@
+                            <td>@item.Viewed</td>
+                            @* <td>@item.TopHot</td> *@
+                            <td>
+                                <a href="#" class="btn btn-sm text-white @((item.Status ? "bg-success" : "bg-danger"))" data-id="@item.MovieId">
+                                    @(item.Status ? "Kích hoạt" : "Hủy Kích Hoạt")
+                                </a>
+                            </td>
+                            <td>
+                                <div class="table-data-feature">
+                                    <a asp-action="Edit" asp-route-id="@item.MovieId" class="btn btn-warning btn-sm mx-1" data-toggle="tooltip" title="Chỉnh sửa">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.MovieId" class="btn btn-danger btn-sm mx-1 confirmDeletion" data-toggle="tooltip" title="Xóa">
+                                        <i class="zmdi zmdi-delete"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        key++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- END DATA TABLE -->
+</div>
+@section Css {
+    <style>
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table img {
+            object-fit: cover;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .table .btn {
+            padding: 0.4rem 0.6rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .bg-success {
+            background-color: #28a745 !important;
+        }
+
+        .bg-danger {
+            background-color: #dc3545 !important;
+        }
+
+    </style>
+}
+@section Js {
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Khởi tạo DataTable
+            var table = $('#myTable').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true
+            });
+
+            // Xử lý export dựa trên lựa chọn dropdown
+            $('#exportDropdown').on('change', function () {
+                var action = $(this).val();
+
+                if (action === "copy") {
+                    table.button('.buttons-copy').trigger();
+                } else if (action === "csv") {
+                    table.button('.buttons-csv').trigger();
+                } else if (action === "excel") {
+                    table.button('.buttons-excel').trigger();
+                } else if (action === "pdf") {
+                    table.button('.buttons-pdf').trigger();
+                } else if (action === "print") {
+                    table.button('.buttons-print').trigger();
+                }
+
+                // Reset dropdown về trạng thái mặc định
+                $(this).val("Export");
+            });
+
+            // Thêm các nút export vào DataTable (ẩn đi, chỉ dùng để trigger)
+            new $.fn.dataTable.Buttons(table, {
+                buttons: [
+                    { extend: 'copy', className: 'buttons-copy d-none' },
+                    { extend: 'csv', className: 'buttons-csv d-none' },
+                    { extend: 'excel', className: 'buttons-excel d-none' },
+                    { extend: 'pdf', className: 'buttons-pdf d-none' },
+                    { extend: 'print', className: 'buttons-print d-none' }
+                ]
+            });
+
+            table.buttons(0, null).container().appendTo('#myTable_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+}

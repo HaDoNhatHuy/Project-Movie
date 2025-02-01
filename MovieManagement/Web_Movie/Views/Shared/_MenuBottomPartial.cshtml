@@ -1,0 +1,17 @@
+﻿@using Database_Movie.EF
+@model List<Category>
+
+<div class="col-md-7 w3ls_footer_grid1_right">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="#">@item.CategoryName</a>
+            </li>
+        }
+        <li>
+            <a href="/contact/">Liên hệ</a>
+        </li>
+
+    </ul>
+</div>

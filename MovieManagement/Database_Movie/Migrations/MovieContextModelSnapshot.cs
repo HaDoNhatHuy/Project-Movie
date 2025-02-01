@@ -472,12 +472,8 @@ namespace Database_Movie.Migrations
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CountryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("CountryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -495,7 +491,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MetaDescription")
@@ -511,7 +506,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("MoreImages")
-                        .IsRequired()
                         .HasColumnType("xml");
 
                     b.Property<string>("MovieLink")
@@ -538,10 +532,6 @@ namespace Database_Movie.Migrations
                     b.Property<Guid?>("TrailerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("TrailerLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("Viewed")
                         .HasColumnType("int");
 
@@ -551,6 +541,8 @@ namespace Database_Movie.Migrations
                     b.HasKey("MovieId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("CountryId");
 
                     b.HasIndex("TrailerId");
 
@@ -874,11 +866,17 @@ namespace Database_Movie.Migrations
                         .WithMany("Movies")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("Database_Movie.EF.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
                     b.HasOne("Database_Movie.EF.Trailer", "Trailer")
                         .WithMany("Movies")
                         .HasForeignKey("TrailerId");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Country");
 
                     b.Navigation("Trailer");
                 });
