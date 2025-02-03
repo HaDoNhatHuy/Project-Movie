@@ -22,6 +22,8 @@ namespace Database_Movie.EF
         public string NewPassword { get; set; }
         [NotMapped]
         public string ConfirmPassword { get; set; }
-        public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+        public ICollection<WatchHistory> WatchHistories { get; set; } = new HashSet<WatchHistory>();
+        public ICollection<FavoriteList> FavoriteLists { get; set; } = new HashSet<FavoriteList>();
     }
 }

@@ -14,5 +14,6 @@ namespace Database_Movie.EF
         [Key]
         public Guid TagId { get; set; }
         public string Name { get; set; }
+        public ICollection<News> News { get; set; } = new HashSet<News>();
     }
 }

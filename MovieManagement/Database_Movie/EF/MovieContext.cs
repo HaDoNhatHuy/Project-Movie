@@ -40,6 +40,8 @@ namespace Database_Movie.EF
                 Avatar = "my-avatar.jpg",
                 Status = true,
                 UserName = "nhathuy",
+                PhoneNumber = "0399539455",
+                Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                 NormalizedUserName = "NHATHUY",
                 Email = "nhathuy.hado@gmail.com",
                 NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
@@ -83,20 +85,97 @@ namespace Database_Movie.EF
                     CategoryName = "HÀNH ĐỘNG",
                     ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
                     Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("A9C0985F-E364-4674-84FE-971D3F8265E5"),
+                    CategoryName = "PHIÊU LƯU",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("39B35EC7-C610-48C0-835C-7A72A51A1D81"),
+                    CategoryName = "KINH DỊ",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("3EC595F3-716C-4B89-88A5-13C900A60A2B"),
+                    CategoryName = "HÀI HƯỚC",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("E9785170-EEB3-4B34-BFB7-6DA5869A9CA6"),
+                    CategoryName = "VIỄN TƯỞNG",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("C96B394B-5DF2-425D-8313-936390B49698"),
+                    CategoryName = "TÂM LÝ",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("DD6CA578-90FF-4F4A-8A7F-7536102E943D"),
+                    CategoryName = "HOẠT HÌNH",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("AF4C7644-0B75-49A5-98B2-2570E56A34BC"),
+                    CategoryName = "TÀI LIỆU",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("452328B9-1F8A-4948-8D68-8E57AEA7D117"),
+                    CategoryName = "CHIẾN TRANH",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("3202DB0B-4211-4C88-9612-90A95B8063D4"),
+                    CategoryName = "ÂM NHẠC",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
+                },
+                new Category()
+                {
+                    CategoryId = Guid.Parse("9DED756D-B173-4B6D-AD1E-44CF47AB88EC"),
+                    CategoryName = "TỘI PHẠM",
+                    ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
+                    Status = true,
                 });
         }
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<MovieActor> MoviesActors { get; set; }
+        public DbSet<Director> Directors { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<MovieImage> MoviesImages { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Ads> Advs { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Comment> Comments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<NewsImage> NewsImages { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
+        public DbSet<Help> Helps { get; set; }
+        public DbSet<FavoriteList> FavoriteLists { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<WatchHistory> WatchHistories { get; set; }
     }
 }

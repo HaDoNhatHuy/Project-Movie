@@ -1,1151 +1,868 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<!-- home -->
-<section class="home">
-	<!-- home bg -->
-	<div class="owl-carousel home__bg">
-		<div class="item home__cover" data-bg="/assets/web/movie-template/img/home/home__bg.jpg"></div>
-		<div class="item home__cover" data-bg="/assets/web/movie-template/img/home/home__bg2.jpg"></div>
-		<div class="item home__cover" data-bg="/assets/web/movie-template/img/home/home__bg3.jpg"></div>
-		<div class="item home__cover" data-bg="/assets/web/movie-template/img/home/home__bg4.jpg"></div>
-	</div>
-	<!-- end home bg -->
-
+<div class="movie-items">
 	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<h1 class="home__title"><b>NEW ITEMS</b> OF THIS SEASON</h1>
-
-				<button class="home__nav home__nav--prev" type="button">
-					<i class="icon ion-ios-arrow-round-back"></i>
-				</button>
-				<button class="home__nav home__nav--next" type="button">
-					<i class="icon ion-ios-arrow-round-forward"></i>
-				</button>
-			</div>
-
-			<div class="col-12">
-				<div class="owl-carousel home__carousel">
-					<div class="item">
-						<!-- card -->
-						<div class="card card--big">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-						<!-- end card -->
-					</div>
-
-					<div class="item">
-						<!-- card -->
-						<div class="card card--big">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-						<!-- end card -->
-					</div>
-
-					<div class="item">
-						<!-- card -->
-						<div class="card card--big">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-						<!-- end card -->
-					</div>
-
-					<div class="item">
-						<!-- card -->
-						<div class="card card--big">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-						<!-- end card -->
-					</div>
+		<div class="row ipad-width">
+			<div class="col-md-8">
+				<div class="title-hd">
+					<h2>in theater</h2>
+					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
 				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- end home -->
-
-<section class="content">
-	<div class="content__head">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<!-- content title -->
-					<h2 class="content__title">New items</h2>
-					<!-- end content title -->
-					<!-- content tabs nav -->
-					<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
-						<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">TV SERIES</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">CARTOONS</a>
-						</li>
+				<div class="tabs">
+					<ul class="tab-links">
+						<li class="active"><a href="#tab1">#Popular</a></li>
+						<li><a href="#tab2"> #Coming soon</a></li>
+						<li><a href="#tab3">  #Top rated  </a></li>
+						<li><a href="#tab4"> #Most reviewed</a></li>
 					</ul>
-					<!-- end content tabs nav -->
-					<!-- content mobile tabs nav -->
-					<div class="content__mobile-tabs" id="content__mobile-tabs">
-						<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<input type="button" value="New items">
-							<span></span>
+					<div class="tab-content">
+						<div id="tab1" class="tab active">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-
-						<div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
-							<ul class="nav nav-tabs" role="tablist">
-								<li class="nav-item" data-value="new releases"><a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a></li>
-
-								<li class="nav-item" data-value="movies"><a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a></li>
-
-								<li class="nav-item" data-value="tv series"><a class="nav-link" id="3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">TV SERIES</a></li>
-
-								<li class="nav-item" data-value="cartoons"><a class="nav-link" id="4-tab" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">CARTOONS</a></li>
-							</ul>
+						<div id="tab2" class="tab">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab3" class="tab">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab4" class="tab">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<!-- end content mobile tabs nav -->
+				</div>
+				<div class="title-hd">
+					<h2>on tv</h2>
+					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+				</div>
+				<div class="tabs">
+					<ul class="tab-links-2">
+						<li><a href="#tab21">#Popular</a></li>
+						<li class="active"><a href="#tab22"> #Coming soon</a></li>
+						<li><a href="#tab23">  #Top rated  </a></li>
+						<li><a href="#tab24"> #Most reviewed</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab21" class="tab">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab22" class="tab active">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab23" class="tab">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab24" class="tab">
+							<div class="row">
+								<div class="slick-multiItem">
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Interstellar</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The revenant</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">The walk</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide-it">
+										<div class="movie-item">
+											<div class="mv-img">
+												<img src="/assets/web/movie-template/images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+											</div>
+											<div class="hvr-inner">
+												<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+											</div>
+											<div class="title-in">
+												<h6><a href="#">Die hard</a></h6>
+												<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="sidebar">
+					<div class="ads">
+						<img src="/assets/web/movie-template/images/uploads/ads1.png" alt="" width="336" height="296">
+					</div>
+					<div class="celebrities">
+						<h4 class="sb-title">Spotlight Celebrities</h4>
+						<div class="celeb-item">
+							<a href="#"><img src="/assets/web/movie-template/images/uploads/ava1.jpg" alt="" width="70" height="70"></a>
+							<div class="celeb-author">
+								<h6><a href="#">Samuel N. Jack</a></h6>
+								<span>Actor</span>
+							</div>
+						</div>
+						<div class="celeb-item">
+							<a href="#"><img src="/assets/web/movie-template/images/uploads/ava2.jpg" alt="" width="70" height="70"></a>
+							<div class="celeb-author">
+								<h6><a href="#">Benjamin Carroll</a></h6>
+								<span>Actor</span>
+							</div>
+						</div>
+						<div class="celeb-item">
+							<a href="#"><img src="/assets/web/movie-template/images/uploads/ava3.jpg" alt="" width="70" height="70"></a>
+							<div class="celeb-author">
+								<h6><a href="#">Beverly Griffin</a></h6>
+								<span>Actor</span>
+							</div>
+						</div>
+						<div class="celeb-item">
+							<a href="#"><img src="/assets/web/movie-template/images/uploads/ava4.jpg" alt="" width="70" height="70"></a>
+							<div class="celeb-author">
+								<h6><a href="#">Justin Weaver</a></h6>
+								<span>Actor</span>
+							</div>
+						</div>
+						<a href="#" class="btn">See all celebrities<i class="ion-ios-arrow-right"></i></a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="container">
-		<!-- content tabs -->
-		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
-				<div class="row">
-					<!-- card -->
-					<div class="col-6 col-sm-12 col-lg-6">
-						<div class="card card--list">
-							<div class="row">
-								<div class="col-12 col-sm-4">
-									<div class="card__cover">
-										<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-										<a href="#" class="card__play">
-											<i class="icon ion-ios-play"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-12 col-sm-8">
-									<div class="card__content">
-										<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-										<span class="card__category">
-											<a href="#">Action</a>
-											<a href="#">Triler</a>
-										</span>
-
-										<div class="card__wrap">
-											<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-
-											<ul class="card__list">
-												<li>HD</li>
-												<li>16+</li>
-											</ul>
-										</div>
-
-										<div class="card__description">
-											<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-12 col-lg-6">
-						<div class="card card--list">
-							<div class="row">
-								<div class="col-12 col-sm-4">
-									<div class="card__cover">
-										<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-										<a href="#" class="card__play">
-											<i class="icon ion-ios-play"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-12 col-sm-8">
-									<div class="card__content">
-										<h3 class="card__title"><a href="#">Benched</a></h3>
-										<span class="card__category">
-											<a href="#">Comedy</a>
-										</span>
-
-										<div class="card__wrap">
-											<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-
-											<ul class="card__list">
-												<li>HD</li>
-												<li>16+</li>
-											</ul>
-										</div>
-
-										<div class="card__description">
-											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-12 col-lg-6">
-						<div class="card card--list">
-							<div class="row">
-								<div class="col-12 col-sm-4">
-									<div class="card__cover">
-										<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-										<a href="#" class="card__play">
-											<i class="icon ion-ios-play"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-12 col-sm-8">
-									<div class="card__content">
-										<h3 class="card__title"><a href="#">Whitney</a></h3>
-										<span class="card__category">
-											<a href="#">Romance</a>
-											<a href="#">Drama</a>
-											<a href="#">Music</a>
-										</span>
-
-										<div class="card__wrap">
-											<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-
-											<ul class="card__list">
-												<li>HD</li>
-												<li>16+</li>
-											</ul>
-										</div>
-
-										<div class="card__description">
-											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-12 col-lg-6">
-						<div class="card card--list">
-							<div class="row">
-								<div class="col-12 col-sm-4">
-									<div class="card__cover">
-										<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-										<a href="#" class="card__play">
-											<i class="icon ion-ios-play"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-12 col-sm-8">
-									<div class="card__content">
-										<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-										<span class="card__category">
-											<a href="#">Comedy</a>
-											<a href="#">Drama</a>
-										</span>
-
-										<div class="card__wrap">
-											<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-
-											<ul class="card__list">
-												<li>HD</li>
-												<li>16+</li>
-											</ul>
-										</div>
-
-										<div class="card__description">
-											<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-12 col-lg-6">
-						<div class="card card--list">
-							<div class="row">
-								<div class="col-12 col-sm-4">
-									<div class="card__cover">
-										<img src="/assets/web/movie-template/img/covers/cover5.jpg" alt="">
-										<a href="#" class="card__play">
-											<i class="icon ion-ios-play"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-12 col-sm-8">
-									<div class="card__content">
-										<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-										<span class="card__category">
-											<a href="#">Action</a>
-											<a href="#">Triler</a>
-										</span>
-
-										<div class="card__wrap">
-											<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-
-											<ul class="card__list">
-												<li>HD</li>
-												<li>16+</li>
-											</ul>
-										</div>
-
-										<div class="card__description">
-											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-12 col-lg-6">
-						<div class="card card--list">
-							<div class="row">
-								<div class="col-12 col-sm-4">
-									<div class="card__cover">
-										<img src="/assets/web/movie-template/img/covers/cover6.jpg" alt="">
-										<a href="#" class="card__play">
-											<i class="icon ion-ios-play"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-12 col-sm-8">
-									<div class="card__content">
-										<h3 class="card__title"><a href="#">Benched</a></h3>
-										<span class="card__category">
-											<a href="#">Comedy</a>
-										</span>
-
-										<div class="card__wrap">
-											<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-
-											<ul class="card__list">
-												<li>HD</li>
-												<li>16+</li>
-											</ul>
-										</div>
-
-										<div class="card__description">
-											<p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-				</div>
-			</div>
-
-			<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
-				<div class="row">
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover5.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover6.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover6.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover5.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-				</div>
-			</div>
-
-			<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="3-tab">
-				<div class="row">
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover6.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover5.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover5.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover6.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-				</div>
-			</div>
-
-			<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="4-tab">
-				<div class="row">
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover6.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover5.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover6.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover5.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover4.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-								<span class="card__category">
-									<a href="#">Action</a>
-									<a href="#">Triler</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover3.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Benched</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover2.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Whitney</a></h3>
-								<span class="card__category">
-									<a href="#">Romance</a>
-									<a href="#">Drama</a>
-									<a href="#">Music</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-					<!-- card -->
-					<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-						<div class="card">
-							<div class="card__cover">
-								<img src="/assets/web/movie-template/img/covers/cover.jpg" alt="">
-								<a href="#" class="card__play">
-									<i class="icon ion-ios-play"></i>
-								</a>
-							</div>
-							<div class="card__content">
-								<h3 class="card__title"><a href="#">Blindspotting</a></h3>
-								<span class="card__category">
-									<a href="#">Comedy</a>
-									<a href="#">Drama</a>
-								</span>
-								<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
-							</div>
-						</div>
-					</div>
-					<!-- end card -->
-				</div>
-			</div>
-		</div>
-		<!-- end content tabs -->
-	</div>
-</section>
-@await Html.PartialAsync("_PremierePartial")
-@await Html.PartialAsync("_OurPartnerPartial")
+</div>

@@ -19,5 +19,6 @@ namespace Database_Movie.EF
         public string? CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public string? ModifiedBy { get; set; }
+        public ICollection<News> News { get; set; } = new HashSet<News>();
     }
 }

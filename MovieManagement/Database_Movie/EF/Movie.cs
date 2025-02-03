@@ -15,15 +15,11 @@ namespace Database_Movie.EF
         public Guid MovieId { get; set; }
         public string MovieName { get; set; }
         public string? Image { get; set; }
-        [Column(TypeName = "xml")]
-        public string? MoreImages { get; set; }
-        [StringLength(50)]
-        public string Actors { get; set; }
-        [StringLength(50)]
-        public string Directors { get; set; }
+        [ForeignKey("DirectorId")]
+        public Guid? DirectorId { get; set; }
+        public Director? Director { get; set; }
         public string Description { get; set; }
-        [Column(TypeName = "text")]
-        public string Time { get; set; }
+        public int Time { get; set; }
         public int? Year { get; set; }
         public string MovieLink { get; set; }
         [ForeignKey("CategoryId")]
@@ -31,7 +27,7 @@ namespace Database_Movie.EF
         public Category? Category { get; set; }
         [ForeignKey("CountryId")]
         public Guid? CountryId { get; set; }
-        public Country Country { get; set; }
+        public Country? Country { get; set; }
         public int? Rating { get; set; }
         [ForeignKey("TrailerId")]
         public Guid? TrailerId { get; set; }
@@ -45,6 +41,11 @@ namespace Database_Movie.EF
         public string? MetaDescription { get; set; }
         public bool Status { get; set; }
         public DateTime? TopHot { get; set; }       
-        public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+        public ICollection<News> News { get; set; } = new HashSet<News>();
+        public ICollection<MovieImage> MovieImages { get; set; }= new HashSet<MovieImage>();
+        public ICollection<MovieActor> MovieActors { get; set; } = new HashSet<MovieActor>();
+        public ICollection<WatchHistory> WatchHistories { get; set; } = new HashSet<WatchHistory>();
+        public ICollection<FavoriteList> FavoriteLists { get; set; } = new HashSet<FavoriteList>();
     }
 }

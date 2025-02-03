@@ -67,6 +67,33 @@ namespace Database_Movie.Migrations
                     b.ToTable("About");
                 });
 
+            modelBuilder.Entity("Database_Movie.EF.Actor", b =>
+                {
+                    b.Property<Guid>("ActorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Biography")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nationality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ActorId");
+
+                    b.ToTable("Actor");
+                });
+
             modelBuilder.Entity("Database_Movie.EF.Ads", b =>
                 {
                     b.Property<Guid>("AdsId")
@@ -179,7 +206,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("RoleId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
@@ -189,7 +215,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Token")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -212,6 +237,30 @@ namespace Database_Movie.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("Users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3453C2B8-58C8-439C-927F-BBB7B42A4C37",
+                            AccessFailedCount = 0,
+                            Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
+                            Avatar = "my-avatar.jpg",
+                            ConcurrencyStamp = "3818e8b7-6b85-43f0-a080-eeafdac125ad",
+                            Email = "nhathuy.hado@gmail.com",
+                            EmailConfirmed = true,
+                            FullName = "Hà Đỗ Nhật Huy",
+                            GroupId = new Guid("0157cb76-b588-4312-bd72-37f414a9193c"),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
+                            NormalizedUserName = "NHATHUY",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMtxpUtGvqmO9cmGq344z940zEX/h+Qj7NOJZT6MMNQc/Rt6sub5y3CKV/vAc6RhUg==",
+                            PhoneNumber = "0399539455",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2f5a9936-ef34-4027-83a2-c95f3b9fe282",
+                            Status = true,
+                            TwoFactorEnabled = false,
+                            UserName = "nhathuy"
+                        });
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Banner", b =>
@@ -303,59 +352,105 @@ namespace Database_Movie.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Category");
-                });
 
-            modelBuilder.Entity("Database_Movie.EF.Comment", b =>
-                {
-                    b.Property<Guid>("CommentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AppUserModelId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MetaDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MetaKeywords")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CommentId");
-
-                    b.HasIndex("AppUserModelId");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("Comment");
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = new Guid("e8086321-ee35-47b6-9806-5c96373c2d11"),
+                            CategoryName = "ROOT",
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            CategoryName = "THỂ LOẠI",
+                            ParentId = new Guid("e8086321-ee35-47b6-9806-5c96373c2d11"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("77ec7193-b9bd-4220-9e52-78615ba520f5"),
+                            CategoryName = "KHOA HỌC",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("16fbeaad-0f2a-4517-bbae-c60ec5e26227"),
+                            CategoryName = "HÀNH ĐỘNG",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("a9c0985f-e364-4674-84fe-971d3f8265e5"),
+                            CategoryName = "PHIÊU LƯU",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("39b35ec7-c610-48c0-835c-7a72a51a1d81"),
+                            CategoryName = "KINH DỊ",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("3ec595f3-716c-4b89-88a5-13c900a60a2b"),
+                            CategoryName = "HÀI HƯỚC",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("e9785170-eeb3-4b34-bfb7-6da5869a9ca6"),
+                            CategoryName = "VIỄN TƯỞNG",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("c96b394b-5df2-425d-8313-936390b49698"),
+                            CategoryName = "TÂM LÝ",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("dd6ca578-90ff-4f4a-8a7f-7536102e943d"),
+                            CategoryName = "HOẠT HÌNH",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("af4c7644-0b75-49a5-98b2-2570e56a34bc"),
+                            CategoryName = "TÀI LIỆU",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("452328b9-1f8a-4948-8d68-8e57aea7d117"),
+                            CategoryName = "CHIẾN TRANH",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("3202db0b-4211-4c88-9612-90a95b8063d4"),
+                            CategoryName = "ÂM NHẠC",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("9ded756d-b173-4b6d-ad1e-44cf47ab88ec"),
+                            CategoryName = "TỘI PHẠM",
+                            ParentId = new Guid("0922c247-a6dc-42aa-855b-42bdfb6926e1"),
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Contact", b =>
@@ -406,41 +501,55 @@ namespace Database_Movie.Migrations
                     b.ToTable("Country");
                 });
 
-            modelBuilder.Entity("Database_Movie.EF.Feedback", b =>
+            modelBuilder.Entity("Database_Movie.EF.Director", b =>
                 {
-                    b.Property<Guid>("FeedbackId")
+                    b.Property<Guid>("DirectorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
+                    b.Property<string>("Biography")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
+                    b.Property<string>("Nationality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("FeedbackId");
+                    b.HasKey("DirectorId");
 
-                    b.ToTable("Feedback");
+                    b.ToTable("Director");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.FavoriteList", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AddedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteList");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Group", b =>
@@ -456,6 +565,32 @@ namespace Database_Movie.Migrations
                     b.HasKey("GroupId");
 
                     b.ToTable("Group");
+
+                    b.HasData(
+                        new
+                        {
+                            GroupId = new Guid("0157cb76-b588-4312-bd72-37f414a9193c"),
+                            Name = "Admin"
+                        });
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.Help", b =>
+                {
+                    b.Property<Guid>("HelpId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HelpId");
+
+                    b.ToTable("Help");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Movie", b =>
@@ -463,11 +598,6 @@ namespace Database_Movie.Migrations
                     b.Property<Guid>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Actors")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
@@ -485,10 +615,8 @@ namespace Database_Movie.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Directors")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<Guid?>("DirectorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -505,9 +633,6 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("MoreImages")
-                        .HasColumnType("xml");
-
                     b.Property<string>("MovieLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -522,9 +647,8 @@ namespace Database_Movie.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Time")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("TopHot")
                         .HasColumnType("datetime2");
@@ -544,9 +668,54 @@ namespace Database_Movie.Migrations
 
                     b.HasIndex("CountryId");
 
+                    b.HasIndex("DirectorId");
+
                     b.HasIndex("TrailerId");
 
                     b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.MovieActor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ActorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActorId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieActor");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.MovieImage", b =>
+                {
+                    b.Property<Guid>("MovieImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsPrimary")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("MovieImageId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieImage");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.News", b =>
@@ -558,9 +727,8 @@ namespace Database_Movie.Migrations
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("CountryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -573,10 +741,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageNews")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -593,26 +757,20 @@ namespace Database_Movie.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("MoreDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MovieLink")
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("NewsTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NewsName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Rating")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Tags")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("TagId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("TopHot")
                         .HasColumnType("datetime2");
@@ -620,23 +778,81 @@ namespace Database_Movie.Migrations
                     b.Property<Guid?>("TrailerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("TrailerLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Viewed")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Year")
-                        .HasColumnType("int");
-
                     b.HasKey("NewsId");
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("TagId");
+
                     b.HasIndex("TrailerId");
 
                     b.ToTable("News");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.NewsImage", b =>
+                {
+                    b.Property<Guid>("NewsImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsPrimary")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("NewsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("NewsImageId");
+
+                    b.HasIndex("NewsId");
+
+                    b.ToTable("NewsImage");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.Review", b =>
+                {
+                    b.Property<Guid>("ReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ReviewId");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Tag", b =>
@@ -690,6 +906,30 @@ namespace Database_Movie.Migrations
                     b.HasKey("TrailerId");
 
                     b.ToTable("Trailer");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.WatchHistory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("WatchedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("WatchHistory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -843,21 +1083,19 @@ namespace Database_Movie.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("Database_Movie.EF.Comment", b =>
+            modelBuilder.Entity("Database_Movie.EF.FavoriteList", b =>
                 {
-                    b.HasOne("Database_Movie.EF.AppUserModel", "AppUserModel")
-                        .WithMany("Comments")
-                        .HasForeignKey("AppUserModelId");
-
                     b.HasOne("Database_Movie.EF.Movie", "Movie")
-                        .WithMany("Comments")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("FavoriteLists")
+                        .HasForeignKey("MovieId");
 
-                    b.Navigation("AppUserModel");
+                    b.HasOne("Database_Movie.EF.AppUserModel", "User")
+                        .WithMany("FavoriteLists")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Movie");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Movie", b =>
@@ -870,6 +1108,10 @@ namespace Database_Movie.Migrations
                         .WithMany()
                         .HasForeignKey("CountryId");
 
+                    b.HasOne("Database_Movie.EF.Director", "Director")
+                        .WithMany("Movies")
+                        .HasForeignKey("DirectorId");
+
                     b.HasOne("Database_Movie.EF.Trailer", "Trailer")
                         .WithMany("Movies")
                         .HasForeignKey("TrailerId");
@@ -878,7 +1120,33 @@ namespace Database_Movie.Migrations
 
                     b.Navigation("Country");
 
+                    b.Navigation("Director");
+
                     b.Navigation("Trailer");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.MovieActor", b =>
+                {
+                    b.HasOne("Database_Movie.EF.Actor", "Actor")
+                        .WithMany("MovieActors")
+                        .HasForeignKey("ActorId");
+
+                    b.HasOne("Database_Movie.EF.Movie", "Movie")
+                        .WithMany("MovieActors")
+                        .HasForeignKey("MovieId");
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.MovieImage", b =>
+                {
+                    b.HasOne("Database_Movie.EF.Movie", "Movie")
+                        .WithMany("MovieImages")
+                        .HasForeignKey("MovieId");
+
+                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.News", b =>
@@ -887,13 +1155,74 @@ namespace Database_Movie.Migrations
                         .WithMany("News")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("Database_Movie.EF.Country", "Country")
+                        .WithMany("News")
+                        .HasForeignKey("CountryId");
+
+                    b.HasOne("Database_Movie.EF.Movie", "Movie")
+                        .WithMany("News")
+                        .HasForeignKey("MovieId");
+
+                    b.HasOne("Database_Movie.EF.Tag", "Tag")
+                        .WithMany("News")
+                        .HasForeignKey("TagId");
+
                     b.HasOne("Database_Movie.EF.Trailer", "Trailer")
                         .WithMany("News")
                         .HasForeignKey("TrailerId");
 
                     b.Navigation("Category");
 
+                    b.Navigation("Country");
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("Tag");
+
                     b.Navigation("Trailer");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.NewsImage", b =>
+                {
+                    b.HasOne("Database_Movie.EF.News", "News")
+                        .WithMany("NewsImages")
+                        .HasForeignKey("NewsId");
+
+                    b.Navigation("News");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.Review", b =>
+                {
+                    b.HasOne("Database_Movie.EF.Movie", "Movie")
+                        .WithMany("Reviews")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Database_Movie.EF.AppUserModel", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.WatchHistory", b =>
+                {
+                    b.HasOne("Database_Movie.EF.Movie", "Movie")
+                        .WithMany("WatchHistories")
+                        .HasForeignKey("MovieId");
+
+                    b.HasOne("Database_Movie.EF.AppUserModel", "User")
+                        .WithMany("WatchHistories")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -947,9 +1276,18 @@ namespace Database_Movie.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Database_Movie.EF.Actor", b =>
+                {
+                    b.Navigation("MovieActors");
+                });
+
             modelBuilder.Entity("Database_Movie.EF.AppUserModel", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("FavoriteLists");
+
+                    b.Navigation("Reviews");
+
+                    b.Navigation("WatchHistories");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Category", b =>
@@ -961,6 +1299,16 @@ namespace Database_Movie.Migrations
                     b.Navigation("News");
                 });
 
+            modelBuilder.Entity("Database_Movie.EF.Country", b =>
+                {
+                    b.Navigation("News");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.Director", b =>
+                {
+                    b.Navigation("Movies");
+                });
+
             modelBuilder.Entity("Database_Movie.EF.Group", b =>
                 {
                     b.Navigation("Users");
@@ -968,7 +1316,27 @@ namespace Database_Movie.Migrations
 
             modelBuilder.Entity("Database_Movie.EF.Movie", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("FavoriteLists");
+
+                    b.Navigation("MovieActors");
+
+                    b.Navigation("MovieImages");
+
+                    b.Navigation("News");
+
+                    b.Navigation("Reviews");
+
+                    b.Navigation("WatchHistories");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.News", b =>
+                {
+                    b.Navigation("NewsImages");
+                });
+
+            modelBuilder.Entity("Database_Movie.EF.Tag", b =>
+                {
+                    b.Navigation("News");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.Trailer", b =>
