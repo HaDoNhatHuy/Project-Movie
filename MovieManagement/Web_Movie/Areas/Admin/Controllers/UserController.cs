@@ -21,7 +21,7 @@ namespace Web_Movie.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _userManager.Users.ToListAsync());
+            return View(await _userManager.Users.Include(i => i.Group).ToListAsync());
             //var userWithRoles = await (from u in _context.Users
             //                           join ur in _context.UserRoles on u.Id equals ur.UserId
             //                           join r in _context.Roles on ur.RoleId equals r.Id

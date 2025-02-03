@@ -61,7 +61,7 @@
                     <th class="align-middle">Email</th>
                     <th class="align-middle">SĐT</th>
                     <th class="align-middle">Địa chỉ</th>
-                    @* <th class="align-middle">Bộ phận</th> *@
+                    <th class="align-middle">Bộ phận</th>
                     <th class="align-middle">Trạng thái</th>
                     <th class="align-middle">Chức năng</th>
                 </tr>
@@ -78,7 +78,7 @@
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
                             <td>@item.Address</td>
-                            @* <td>@item.Group.Name</td> *@
+                            <td>@item.Group?.Name</td>
                             <td>
                                 <a href="#" class="btn btn-sm text-white @((item.Status ? "bg-success" : "bg-danger"))" data-id="@item.Id">
                                     @(item.Status ? "Kích hoạt" : "Hủy Kích Hoạt")
