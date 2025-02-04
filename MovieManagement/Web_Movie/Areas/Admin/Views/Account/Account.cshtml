@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+@model Web_Movie.Areas.Admin.ViewModels.AccountViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/loginPage/style.css" />
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Đăng ký</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-google-plus-g fa-beat"
+                           style="color: rgb(255, 0, 0)"></i>
+                    </a>
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-facebook-f fa-bounce"
+                           style="color: blue"></i>
+                    </a>
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-github fa-fade"></i>
+                    </a>
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-linkedin-in fa-flip"
+                           style="color: blue"></i>
+                    </a>
+                </div>
+                <span>hoặc đăng ký bằng email</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Đăng ký</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form asp-action="Login" asp-controller="Account" method="post">
+                <h1>Đăng nhập</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-google-plus-g fa-beat"
+                           style="color: rgb(255, 0, 0)"></i>
+                    </a>
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-facebook-f fa-bounce"
+                           style="color: blue"></i>
+                    </a>
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-github fa-fade"></i>
+                    </a>
+                    <a href="#" class="icon">
+                        <i class="fa-brands fa-linkedin-in fa-flip"
+                           style="color: blue"></i>
+                    </a>
+                </div>
+                <span>hoặc đăng nhập bằng email</span>
+                <input type="email" asp-for="@Model.LoginViewModel.Email" placeholder="Email" required />
+                <input type="password" asp-for="@Model.LoginViewModel.Password" placeholder="Password" required />
+                <a href="#" style="color: rgb(255, 0, 0)">Quên mật khẩu?</a>
+                <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Chào mừng trở lại!</h1>
+                    <p>
+                        Vui lòng điền vào chi tiết thông tin cá nhân để sử dụng cho tất cả
+                        các trang tính năng
+                    </p>
+                    <button class="hidden" id="login">Đăng nhập</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Xin chào!</h1>
+                    <p>
+                        Vui lòng đăng ký đầy đủ chi tiết thông tin cá nhân để sử dụng cho
+                        tất cả các trang tính năng.
+                    </p>
+                    <button class="hidden" id="register">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/loginPage/script.js"></script>
+</body>
+</html>
