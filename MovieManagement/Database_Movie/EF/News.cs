@@ -14,7 +14,8 @@ namespace Database_Movie.EF
         [Key]
         public Guid NewsId { get; set; }
         public string NewsTitle { get; set; }
-        public string Image { get; set; }
+        public string? PrimaryImage { get; set; }
+        public string? MoreImage { get; set; }
         public string Description { get; set; }
 
         [ForeignKey("CategoryId")]

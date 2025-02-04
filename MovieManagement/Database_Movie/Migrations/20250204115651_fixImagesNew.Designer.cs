@@ -4,6 +4,7 @@ using Database_Movie.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20250204115651_fixImagesNew")]
+    partial class fixImagesNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,7 +248,7 @@ namespace Database_Movie.Migrations
                             AccessFailedCount = 0,
                             Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                             Avatar = "my-avatar.jpg",
-                            ConcurrencyStamp = "5a9f68bf-e6a0-4d78-b457-46e05b9e3a48",
+                            ConcurrencyStamp = "6ec72e68-c7fb-418c-beb8-801140e81848",
                             Email = "nhathuy.hado@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Hà Đỗ Nhật Huy",
@@ -253,10 +256,10 @@ namespace Database_Movie.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
                             NormalizedUserName = "NHATHUY",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKGSbaCEbRjYyvuIiBrCy7ous5R9BD6hRrpVlbIAF2lDYm9gzyQaAU253fnXvClKGg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEVgofvI4NyeeHiGtORb1AGN9c6GTKX/MypLu3plaO4XGSSZCrFbVFLzWMrBf6BlVA==",
                             PhoneNumber = "0399539455",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "faf5be35-2cb5-484f-9d4d-6c1ec87e102c",
+                            SecurityStamp = "079cc859-694b-479b-afec-8632e301c667",
                             Status = true,
                             TwoFactorEnabled = false,
                             UserName = "nhathuy"
@@ -618,6 +621,9 @@ namespace Database_Movie.Migrations
                     b.Property<Guid?>("DirectorId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -630,18 +636,12 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("MoreImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MovieLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MovieName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PrimaryImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Rating")
@@ -743,6 +743,10 @@ namespace Database_Movie.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -758,17 +762,11 @@ namespace Database_Movie.Migrations
                     b.Property<string>("MoreDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MoreImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid?>("MovieId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NewsTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PrimaryImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")

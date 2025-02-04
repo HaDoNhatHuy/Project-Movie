@@ -14,7 +14,8 @@ namespace Database_Movie.EF
         [Key]
         public Guid MovieId { get; set; }
         public string MovieName { get; set; }
-        public string? Image { get; set; }
+        public string? PrimaryImage { get; set; }
+        public string? MoreImage { get; set; }
         [ForeignKey("DirectorId")]
         public Guid? DirectorId { get; set; }
         public Director? Director { get; set; }

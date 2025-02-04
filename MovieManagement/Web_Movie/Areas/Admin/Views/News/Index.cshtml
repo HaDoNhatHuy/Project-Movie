@@ -58,6 +58,7 @@
                     <th class="align-middle">#</th>
                     <th class="align-middle">Tiêu đề</th>
                     <th class="align-middle">Ảnh</th>
+                    <th class="align-middle">Ảnh khác</th>
                     <th class="align-middle">Thể loại</th>
                     <th class="align-middle">Trạng thái</th>
                     <th class="align-middle"></th>
@@ -71,7 +72,20 @@
                         <tr class="align-middle">
                             <td>@key</td>
                             <td>@item.NewsTitle</td>
-                            <td><img src="/assets/admin/images/NewsImages/@item.Image" style="width:100px; border-radius: 5px;" /></td>                           
+                            <td><img src="/assets/admin/images/NewsImages/@item.PrimaryImage" style="width:100px; border-radius: 5px;" /></td>
+                            <td>
+                                @if (item.NewsImages != null && item.NewsImages.Any())
+                                {
+                                    @foreach (var img in item.NewsImages)
+                                    {
+                                        <img src="/assets/admin/images/NewsImages/@img.ImageName" style="width:80px; height: 80px; border-radius: 5px; margin: 5px;" />
+                                    }
+                                }
+                                else
+                                {
+                                    <span>Không có ảnh</span>
+                                }
+                            </td>
                             <td>@item.Category?.CategoryName</td>
                             <td>
                                 <a href="#" class="btn btn-sm text-white @((item.Status ? "bg-success" : "bg-danger"))" data-id="@item.NewsId">

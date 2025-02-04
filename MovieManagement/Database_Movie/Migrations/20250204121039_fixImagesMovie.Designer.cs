@@ -4,6 +4,7 @@ using Database_Movie.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20250204121039_fixImagesMovie")]
+    partial class fixImagesMovie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,7 +248,7 @@ namespace Database_Movie.Migrations
                             AccessFailedCount = 0,
                             Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                             Avatar = "my-avatar.jpg",
-                            ConcurrencyStamp = "5a9f68bf-e6a0-4d78-b457-46e05b9e3a48",
+                            ConcurrencyStamp = "6ac0d156-ad5d-4e43-8b88-6afa4775e917",
                             Email = "nhathuy.hado@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Hà Đỗ Nhật Huy",
@@ -253,10 +256,10 @@ namespace Database_Movie.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
                             NormalizedUserName = "NHATHUY",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKGSbaCEbRjYyvuIiBrCy7ous5R9BD6hRrpVlbIAF2lDYm9gzyQaAU253fnXvClKGg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED6bp5DSoC8hk7W/P7Mc5wkue/1nGJ1N46QY5FVVCL54HwF4xF/MEi4uPbotAOwOrQ==",
                             PhoneNumber = "0399539455",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "faf5be35-2cb5-484f-9d4d-6c1ec87e102c",
+                            SecurityStamp = "f48da18e-1097-4f7e-969a-66429b97a306",
                             Status = true,
                             TwoFactorEnabled = false,
                             UserName = "nhathuy"
@@ -630,9 +633,6 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("MoreImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MovieLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -756,9 +756,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("MoreDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MoreImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("MovieId")

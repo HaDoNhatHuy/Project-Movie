@@ -19,6 +19,6 @@ namespace Database_Movie.EF
         public News? News { get; set; }
 
         public string? ImageUrl { get; set; }  // Đường dẫn ảnh
-        public bool? IsPrimary { get; set; } // Đánh dấu ảnh chính
+        public string? ImageName { get; set; } 
     }
 }

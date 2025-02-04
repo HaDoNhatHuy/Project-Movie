@@ -1,14 +1,15 @@
 ﻿@using Database_Movie.EF
 @model News
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="card shadow-lg border-0 rounded">
     <div class="card-header">
-        <h4 class="m-0">Thêm Tin Tức</h4>
+        <h4 class="m-0">Cập nhật Tin Tức</h4>
     </div>
-    <form asp-action="Create" asp-controller="News" method="post" enctype="multipart/form-data" class="form-horizontal">        
+    <form asp-action="Edit" asp-controller="News" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <input type="hidden" asp-for="NewsId" />
         <div class="card-body">
             <div class="row g-3">
                 <div class="col-md-6">
