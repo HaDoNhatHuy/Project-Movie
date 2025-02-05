@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.ContentModel;
+using System.Security.Claims;
 using Web_Movie.Areas.Admin.ViewModels;
 
 namespace Web_Movie.Areas.Admin.Controllers
@@ -30,20 +32,25 @@ namespace Web_Movie.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(AccountViewModel loginVM)
         {
-            var result = await _signInManager.PasswordSignInAsync(loginVM.LoginViewModel.Email, loginVM.LoginViewModel.Password, false, false);
-            if (result.Succeeded)
+            var user = await _userManager.FindByEmailAsync(loginVM.LoginViewModel.Email);
+            if (user == null)
             {
+                return View("Account", new AccountViewModel
+                {
+                    LoginViewModel = loginVM.LoginViewModel,
+                    RegisterViewModel = new RegisterViewModel()
+                });
+            }
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, loginVM.LoginViewModel.Password, false, false);
+            if (result.Succeeded)
+            {                
                 return Redirect(loginVM.LoginViewModel.ReturnUrl ?? "/Admin");
             }
-
-            // Re-populate the view model with register data
-            var model = new AccountViewModel
+            return View("Account", new AccountViewModel
             {
                 LoginViewModel = loginVM.LoginViewModel,
                 RegisterViewModel = new RegisterViewModel()
-            };
-
-            return View("Account", model);
+            });
         }
         [HttpPost]
         public async Task<IActionResult> Register(AccountViewModel registerVM)
@@ -67,7 +74,7 @@ namespace Web_Movie.Areas.Admin.Controllers
 
             return View("Account", model);
         }
-        public async Task<IActionResult> Logout(string returnUrl = "/")
+        public async Task<IActionResult> Logout(string returnUrl = "/Admin")
         {
             await HttpContext.SignOutAsync();
             await _signInManager.SignOutAsync();

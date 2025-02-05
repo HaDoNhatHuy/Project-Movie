@@ -1,6 +1,7 @@
 using Database_Movie.EF;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Web_Movie.Areas.Admin.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,11 @@ builder.Services.Configure<IdentityOptions>(options =>
     //options.User.AllowedUserNameCharacters =
     //"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     options.User.RequireUniqueEmail = true;
+});
+//Add IActionFilter
+builder.Services.AddMvc(cfg =>
+{
+    cfg.Filters.Add(new CustomActionFilter());
 });
 
 var app = builder.Build();

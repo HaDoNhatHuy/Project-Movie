@@ -1,4 +1,10 @@
 ﻿@using System.Web
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUserModel> UserManager
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -302,51 +308,60 @@
                                     </div>
                                 </div>
                                 <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="/assets/web/images/admin.png" alt="John Doe">
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="/assets/web/images/admin.png" alt="John Doe">
-                                                    </a>
+                                    @if (currentUser != null)
+                                    {
+                                        var avatar = string.IsNullOrEmpty(currentUser.Avatar) ? "/assets/web/images/admin.png" : "/assets/admin/images/UserImages/" + currentUser.Avatar;
+                                        var email = currentUser.Email ?? "Không có email";
+                                        var fullName = string.IsNullOrEmpty(currentUser.FullName) ? "Không có tên" : currentUser.FullName;
+
+                                        @* @if (User.Identity?.IsAuthenticated ?? false) *@
+
+                                            <div class="account-item clearfix js-item-menu">
+                                            <div class="image">
+                                                <img src="@avatar" alt="@User.Identity.Name">
+                                            </div>
+                                            <div class="content">
+                                                <a class="js-acc-btn" href="#">@fullName</a>
+                                            </div>
+                                            <div class="account-dropdown js-dropdown">
+                                                <div class="info clearfix">
+                                                    <div class="image">
+                                                        <a href="#">
+                                                            <img src="@avatar" style="width:60px" alt="@User.Identity.Name">
+                                                        </a>
+                                                    </div>
+                                                    <div class="content">
+                                                        <h5 class="name">
+                                                            <a href="#">@fullName</a>
+                                                        </h5>
+                                                        <span class="email">@email</span>
+                                                    </div>
                                                 </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">john doe</a>
-                                                    </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                <div class="account-dropdown__body">
+                                                    <div class="account-dropdown__item">
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-account"></i>Account
+                                                        </a>
+                                                    </div>
+                                                    <div class="account-dropdown__item">
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-settings"></i>Setting
+                                                        </a>
+                                                    </div>
+                                                    <div class="account-dropdown__item">
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-money-box"></i>Billing
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="account-dropdown__footer">
+                                                    <a asp-action="Logout" asp-controller="Account">
+                                                        <i class="zmdi zmdi-power"></i>Logout
+                                                    </a>
                                                 </div>
                                             </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account
-                                                    </a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting
-                                                    </a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout
-                                                </a>
-                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -408,27 +423,27 @@
         @if (TempData["success"] != null)
         {
             <text>
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Thành công!',
-                                        /* text:'@TempData["success"]', *///sử dụng cái này bị lỗi font nên đổi lại Html.Raw
-                                        // text: '@Html.Raw((TempData["success"]))',
-                                        text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["success"]?.ToString() ?? ""))',
-                                        timer: 2000,
-                                        showConfirmButton: false
-                                    });
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Thành công!',
+                                                /* text:'@TempData["success"]', *///sử dụng cái này bị lỗi font nên đổi lại Html.Raw
+                                                // text: '@Html.Raw((TempData["success"]))',
+                                                text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["success"]?.ToString() ?? ""))',
+                                                timer: 2000,
+                                                showConfirmButton: false
+                                            });
             </text>
         }
         else if (TempData["error"] != null)
         {
             <text>
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Thất bại!',
-                                        text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["error"]?.ToString() ?? ""))',
-                                        timer: 2000,
-                                        showConfirmButton: false
-                                    });
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Thất bại!',
+                                                text: '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["error"]?.ToString() ?? ""))',
+                                                timer: 2000,
+                                                showConfirmButton: false
+                                            });
             </text>
         }
     </script>

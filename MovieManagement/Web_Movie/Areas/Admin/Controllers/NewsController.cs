@@ -158,7 +158,7 @@ namespace Web_Movie.Areas.Admin.Controllers
                 return NotFound();
             }
             // Xóa ảnh đại diện của bài viết
-            string path = this._environment.WebRootPath + "/assets/admin/images/AboutImages/" + newsDelete.PrimaryImage;// lấy đường dẫn hình ra để xóa file hình            
+            string path = this._environment.WebRootPath + "/assets/admin/images/NewsImages/" + newsDelete.PrimaryImage;// lấy đường dẫn hình ra để xóa file hình            
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);//xóa hình trên lưu trên máy
