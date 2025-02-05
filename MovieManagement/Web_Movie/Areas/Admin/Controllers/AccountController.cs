@@ -80,5 +80,13 @@ namespace Web_Movie.Areas.Admin.Controllers
             await _signInManager.SignOutAsync();
             return Redirect(returnUrl);
         }
+        public IActionResult MyAccount()
+        {
+            return View();
+        }
+        public IActionResult Settings()
+        {
+            return View();
+        }
     }
 }

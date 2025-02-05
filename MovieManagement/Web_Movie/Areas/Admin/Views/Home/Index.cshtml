@@ -1,8 +1,102 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
+﻿@{
+    ViewData["Title"] = "Dashboard Admin";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="container-fluid">
+    <h1 class="text-center my-4">Dashboard - Quản lý Website Xem Phim</h1>
 
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Tổng số Phim</div>
+                <div class="card-body">
+                    <h3 class="card-title">120</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Thành viên</div>
+                <div class="card-body">
+                    <h3 class="card-title">5000</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Lượt Xem Hôm Nay</div>
+                <div class="card-body">
+                    <h3 class="card-title">10,500</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-header">Đánh Giá Mới</div>
+                <div class="card-body">
+                    <h3 class="card-title">320</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">📽️ Phim mới cập nhật</div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Hình Ảnh</th>
+                                <th>Tên Phim</th>
+                                <th>Thể Loại</th>
+                                <th>Ngày Cập Nhật</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="/images/movie1.jpg" alt="Thumbnail" style="width: 50px;"></td>
+                                <td>Phim 1</td>
+                                <td>Hành động</td>
+                                <td>02/2025</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/movie2.jpg" alt="Thumbnail" style="width: 50px;"></td>
+                                <td>Phim 2</td>
+                                <td>Kinh dị</td>
+                                <td>02/2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">📊 Thống kê lượt xem</div>
+                <div class="card-body">
+                    <canvas id="viewsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('viewsChart').getContext('2d');
+    var viewsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ngày 1', 'Ngày 2', 'Ngày 3', 'Ngày 4', 'Ngày 5'],
+            datasets: [{
+                label: 'Lượt xem',
+                data: [1000, 1500, 2000, 2500, 3000],
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        }
+    });
+</script>
