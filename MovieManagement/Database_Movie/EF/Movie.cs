@@ -22,7 +22,7 @@ namespace Database_Movie.EF
         public string Description { get; set; }
         public int Time { get; set; }
         public int? Year { get; set; }
-        public string MovieLink { get; set; }
+        public string? MovieLink { get; set; }
         [ForeignKey("CategoryId")]
         public Guid? CategoryId { get; set; }
         public Category? Category { get; set; }

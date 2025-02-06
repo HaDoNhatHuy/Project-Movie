@@ -103,7 +103,6 @@ namespace Web_Movie.Areas.Admin.Controllers
                 return NotFound();
             }
             updateUser.FullName = userModel.FullName;
-            updateUser.Avatar = userModel.Avatar;
             updateUser.Address = userModel.Address;
             updateUser.PhoneNumber = userModel.PhoneNumber;
             if (Avatar != null)
@@ -116,6 +115,10 @@ namespace Web_Movie.Areas.Admin.Controllers
                     stream.Close();
                 }
                 updateUser.Avatar = Avatar.FileName;
+            }
+            else
+            {
+                updateUser.Avatar = currentUser.Avatar;
             }
             //Kiểm tra mk hiện tại nếu cần thay đổi mk
             if (!string.IsNullOrEmpty(userModel.PasswordHash))
@@ -156,7 +159,7 @@ namespace Web_Movie.Areas.Admin.Controllers
             {
                 TempData["error"] = "Có lỗi xảy ra khi cập nhật tài khoản.";
                 return RedirectToAction("Settings", "Account");
-            }            
+            }
             await _userManager.UpdateAsync(updateUser);
             await _context.SaveChangesAsync();
             TempData["success"] = "Cập nhật tài khoản thành công";

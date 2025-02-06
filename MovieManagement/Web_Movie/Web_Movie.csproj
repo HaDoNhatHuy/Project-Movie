@@ -40,7 +40,6 @@
     <Folder Include="wwwroot\assets\admin\ckeditor\samples\old\easyimage\" />
     <Folder Include="wwwroot\assets\admin\ckfinder\core\connector\aspx\files\" />
     <Folder Include="wwwroot\assets\admin\images\NewsImages\" />
-    <Folder Include="wwwroot\assets\web\movie-template\" />
   </ItemGroup>
 
 </Project>

@@ -82,12 +82,13 @@
                     {
                         <tr class="align-middle">
                             <td>@key</td>
-                            <td>@item.MovieName</td>
+                            <td><a asp-action="Detail" asp-controller="Movie" asp-route-MovieId="@item.MovieId">@item.MovieName</a></td>
                             <td><img src="/assets/admin/images/MovieImages/@item.PrimaryImage" style="width:100px; border-radius: 5px;" /></td>
+                            
                             @* <td>@item.Directors</td> *@
                             @* <td>@item.Actors</td> *@
                             @* <td>@Html.Raw(item.Description)</td> *@
-                            <td>@item.Time</td>
+                            <td>@item.Time phút</td>
                             @* <td>@item.Country</td> *@
                             @* <td>@item.Year</td> *@
                             @* <td><a href="@item.MovieLink"></a>@item.MovieLink</td> *@

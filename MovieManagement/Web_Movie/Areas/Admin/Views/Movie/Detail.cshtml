@@ -1,0 +1,213 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="movie-container">
+    <!-- Header phim: ảnh lớn và thông tin -->
+    <div class="movie-header">
+        <div class="movie-poster-container">
+            <img src="/assets/admin/images/MovieImages/@Model.PrimaryImage" alt="Tên phim" class="movie-poster">
+        </div>
+        <div class="movie-info">
+            <h1>@Model.MovieName</h1>
+            <p><strong>Thể loại:</strong> @Model.Category?.CategoryName</p>
+            <p><strong>Diễn viên:</strong> Diễn viên 1, Diễn viên 2, ...</p>
+            <p><strong>Đạo diễn:</strong> Tên đạo diễn</p>
+            <p><strong>Thời lượng:</strong> @Model.Time phút</p>
+            <p><strong>Độ tuổi:</strong> 16+</p>
+            <p><strong>Độ phân giải:</strong> 1080p, 4K</p>
+            <p><strong>Quốc gia:</strong> Mỹ</p>
+            <p><strong>Ngày ra mắt:</strong> 01/01/2025</p>
+            <p><strong>Đánh giá:</strong> ⭐⭐⭐⭐☆ (4.5/5)</p>
+        </div>
+    </div>
+
+    <!-- Phần hình ảnh liên quan: Slider -->
+    <div class="movie-gallery">
+        <h2>Hình Ảnh Liên Quan</h2>
+        <div class="gallery-container">
+            <div class="gallery-slide">
+                @foreach (var item in Model.MovieImages)
+                {
+                    <div class="gallery-item">
+                        <img src="/assets/admin/images/MovieImages/@item.ImageName" alt="@item.ImageName">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Phần mô tả phim -->
+    <div class="movie-description">
+        <h2>Mô Tả Phim</h2>
+        <p>@Html.Raw(Model.Description)</p>
+    </div>
+
+    <!-- Trailer -->
+    <div class="movie-trailer">
+        <h2>Trailer</h2>
+        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/4MilDTuQToU" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+@section Css {
+    <style>
+        /* Container tổng thể */
+        .movie-container {
+            width: 85%;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Header phim: ảnh chính và thông tin */
+        .movie-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .movie-poster-container {
+            width: 250px;
+            height: auto;
+            margin-right: 30px;
+            flex-shrink: 0;
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie-info {
+            flex: 1;
+        }
+
+            .movie-info h1 {
+                font-size: 36px;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .movie-info p {
+                font-size: 16px;
+                margin: 5px 0;
+                line-height: 1.6;
+            }
+
+            .movie-info strong {
+                color: #007bff;
+            }
+
+        /* Phần hình ảnh liên quan: Slider */
+        .movie-gallery {
+            margin-top: 30px;
+        }
+
+            .movie-gallery h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+                color: #333;
+                text-align: center;
+            }
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .gallery-slide {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 150px; /* Kích thước đều cho các hình ảnh */
+            margin: 10px;
+        }
+
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.5s ease;
+            }
+
+            .gallery-item:hover img {
+                transform: scale(1.05);
+            }
+
+        /* Tạo hiệu ứng tự động chuyển ảnh */
+        .gallery-container:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        /* Phần mô tả phim */
+        .movie-description {
+            margin-top: 40px;
+        }
+
+            .movie-description h2 {
+                font-size: 24px;
+                color: #333;
+                margin-bottom: 15px;
+            }
+
+            .movie-description p {
+                font-size: 16px;
+                line-height: 1.8;
+                color: #555;
+            }
+
+        /* Trailer */
+        .movie-trailer {
+            margin-top: 40px;
+        }
+
+            .movie-trailer h2 {
+                font-size: 24px;
+                color: #333;
+                margin-bottom: 15px;
+            }
+
+        iframe {
+            border-radius: 10px;
+        }
+    </style>
+}
+
+@section Js {
+    <script>
+        let currentIndex = 0;
+
+        function autoScroll() {
+            const slides = document.querySelectorAll('.gallery-item');
+            const totalSlides = slides.length;
+
+            currentIndex = (currentIndex + 1) % totalSlides;
+            const slideWidth = slides[0].offsetWidth;
+            const slideContainer = document.querySelector('.gallery-slide');
+            slideContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+
+        setInterval(autoScroll, 3000); // Chuyển ảnh mỗi 3 giây
+    </script>
+}

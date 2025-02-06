@@ -1,0 +1,72 @@
+﻿@using Database_Movie.EF
+@model Movie
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow-lg border-0 rounded">
+    <div class="card-header">
+        <h4 class="m-0">Cập nhật phim</h4>
+    </div>
+    <form asp-action="Edit" asp-controller="Movie" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <input type="hidden" asp-for="MovieId" />
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="MovieName" class=" form-label fw-bold ">Tên bộ phim</label>
+                    <input type="text" asp-for="MovieName" placeholder="Vui lòng nhập tên bộ phim" class="form-control shadow-sm">
+                </div>
+                <div class="col-md-6">
+                    <label for="MoreImage" class=" form-label fw-bold">Ảnh</label>
+                    <input type="file" asp-for="MoreImage" id="MoreImage" name="MoreImage" class="form-control shadow-sm" multiple>
+                    <small class="form-text text-muted">Chọn nhiều ảnh (Ctrl + Click hoặc Shift + Click để chọn nhiều ảnh)</small>
+                </div>
+                <div class="col-12">
+                    <label for="PrimaryImage" class=" form-label fw-bold">Ảnh chính</label>
+                    <input type="file" asp-for="PrimaryImage" id="PrimaryImage" name="PrimaryImage" class="form-control shadow-sm">
+                </div>
+                <div class="col-12">
+                    <label for="Time" class=" form-label fw-bold">Thời lượng</label>
+                    <input type="text" asp-for="Time" id="Time" name="Time" class="form-control shadow-sm">
+                </div>
+                <div class="col-12">
+                    <label for="Description" class="form-label fw-bold">Mô tả</label>
+                    <textarea asp-for="Description" id="Description" name="Description" class="form-control shadow-sm"></textarea>
+                </div>
+                <div class="col-12">
+                    <label for="Status" class="form-label fw-bold">Trạng thái</label>
+                    <select asp-for="Status" id="Status" class="form-control shadow-sm">
+                        <option value="">---- Chọn trạng thái ----</option>
+                        <option value="true">Kích hoạt</option>
+                        <option value="false">Huỷ kích hoạt</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="CategoryId" class="form-label fw-bold">Thể loại</label>
+                    <select asp-for="CategoryId" id="CategoryId" class="form-control shadow-sm" asp-items="ViewBag.Categories">
+                        <option value="">---- Chọn trạng thái ----</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button type="submit" class="btn btn-success shadow-sm">
+                <i class="fa fa-check-circle"></i> Lưu
+            </button>
+            <button type="reset" class="btn btn-warning shadow-sm text-white">
+                <i class="fa fa-undo"></i> Làm lại
+            </button>
+            <a asp-action="Index" asp-controller="Movie" class="btn btn-secondary shadow-sm">
+                <i class="fa fa-arrow-left"></i> Trở lại
+            </a>
+        </div>
+    </form>
+</div>
+@section Js {
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector("#Description"))
+            .catch(error => console.error(error));
+    </script>
+}
+

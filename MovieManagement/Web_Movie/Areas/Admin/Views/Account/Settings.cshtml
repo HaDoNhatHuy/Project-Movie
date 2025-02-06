@@ -52,17 +52,23 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label>Bạn có muốn đổi mật khẩu không?</label>
+                                <a href="#" class="btn btn-link" onclick="togglePasswordForm()">Click vào đây để đổi mật khẩu</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 passwordForm" style="display: none;">
+                            <div class="form-group">
                                 <label for="account-pass">Current Password</label>
                                 <input class="form-control" asp-for="PasswordHash" type="password" id="account-pass">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 passwordForm" style="display: none;">
                             <div class="form-group">
                                 <label for="account-pass">New Password</label>
                                 <input class="form-control" asp-for="NewPassword" type="password" id="account-pass">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 passwordForm" style="display: none;">
                             <div class="form-group">
                                 <label for="account-confirm-pass">Confirm Password</label>
                                 <input class="form-control" asp-for="ConfirmPassword" type="password" id="account-confirm-pass">
@@ -120,7 +126,7 @@
         }
     </style>
 }
-@section Js{
+@section Js {
     <script>
         document.getElementById('avatarInput').addEventListener('change', function(event) {
             var file = event.target.files[0];
@@ -137,5 +143,17 @@
             document.getElementById('avatarInput').value = "";
             document.getElementById('previewImage').src = "/assets/admin/images/UserImages/@ViewBag.CurrentUser.Avatar";
         });
+    </script>
+    <script>
+        function togglePasswordForm() {
+            var forms = document.getElementsByClassName("passwordForm"); // Lấy tất cả phần tử có class "passwordForm"
+            for (var i = 0; i < forms.length; i++) {
+                if (forms[i].style.display === "none") {
+                    forms[i].style.display = "block";
+                } else {
+                    forms[i].style.display = "none";
+                }
+            }
+        }
     </script>
 }
