@@ -1,77 +1,87 @@
-﻿@{
+﻿@model AppUserModel
+@{
     ViewData["Title"] = "Settings";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="col-12">
     <div class="tab-content">
-        <div class="tab-pane fade active show" id="account-general">
+        <form asp-action="UpdateProfile" asp-controller="Account" enctype="multipart/form-data">
+            <div class="tab-pane fade active show" id="account-general">
 
-            <div class="card-body media align-items-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="d-block ui-w-80">
-                <div class="media-body ml-4">
-                    <label class="btn btn-outline-primary">
-                        Upload new photo
-                        <input type="file" class="account-settings-fileinput">
-                    </label> &nbsp;
-                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                <div class="card-body media align-items-center">
+                    @* <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="d-block ui-w-80"> *@
+                    <img id="previewImage" src="/assets/admin/images/UserImages/@ViewBag.CurrentUser.Avatar" alt="" class="d-block ui-w-80">
+                    <div class="media-body ml-4">
+                        <label class="btn btn-outline-primary">
+                            Upload new photo
+                            <input type="file" asp-for="Avatar" class="account-settings-fileinput" id="avatarInput">
+                        </label> &nbsp;
+                        <button type="button" class="btn btn-default md-btn-flat" id="resetButton">Reset</button>
 
-                    <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                        <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                    </div>
+                </div>
+                <hr class="border-light m-0">
+
+                <!-- Profile Settings-->
+                <div class="col-lg-12 pb-5">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="account-fn">Full Name</label>
+                                <input class="form-control" type="text" asp-for="FullName" value="@ViewBag.CurrentUser.FullName" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="account-email">E-mail Address</label>
+                                <input class="form-control" type="email" asp-for="Email" value="@ViewBag.CurrentUser.Email" disabled="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="account-phone">Phone Number</label>
+                                <input class="form-control" type="text" asp-for="PhoneNumber" value="@ViewBag.CurrentUser.PhoneNumber" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="account-fn">Address</label>
+                                <input class="form-control" type="text" asp-for="Address" value="@ViewBag.CurrentUser.Address" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="account-pass">Current Password</label>
+                                <input class="form-control" asp-for="PasswordHash" type="password" id="account-pass">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="account-pass">New Password</label>
+                                <input class="form-control" asp-for="NewPassword" type="password" id="account-pass">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="account-confirm-pass">Confirm Password</label>
+                                <input class="form-control" asp-for="ConfirmPassword" type="password" id="account-confirm-pass">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <hr class="mt-2 mb-3">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                <div class="custom-control custom-checkbox d-block">
+                                    <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
+                                    <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
+                                </div>
+                                <button class="btn btn-style-1 btn-primary" type="submit" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr class="border-light m-0">
-
-            <!-- Profile Settings-->
-            <div class="col-lg-12 pb-5">
-                <form class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account-fn">First Name</label>
-                            <input class="form-control" type="text" id="account-fn" value="Daniel" required="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account-ln">Last Name</label>
-                            <input class="form-control" type="text" id="account-ln" value="Adams" required="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account-email">E-mail Address</label>
-                            <input class="form-control" type="email" id="account-email" value="daniel.adams@example.com" disabled="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account-phone">Phone Number</label>
-                            <input class="form-control" type="text" id="account-phone" value="+7 (805) 348 95 72" required="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account-pass">New Password</label>
-                            <input class="form-control" type="password" id="account-pass">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account-confirm-pass">Confirm Password</label>
-                            <input class="form-control" type="password" id="account-confirm-pass">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <hr class="mt-2 mb-3">
-                        <div class="d-flex flex-wrap justify-content-between align-items-center">
-                            <div class="custom-control custom-checkbox d-block">
-                                <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
-                                <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
-                            </div>
-                            <button class="btn btn-style-1 btn-primary" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 @section Css {
@@ -86,9 +96,11 @@
             background: transparent;
             color: #26B4FF;
         }
+
         label.btn {
             margin-bottom: 0;
         }
+
         .account-settings-fileinput {
             position: absolute;
             visibility: hidden;
@@ -107,4 +119,23 @@
             color: #4E5155;
         }
     </style>
+}
+@section Js{
+    <script>
+        document.getElementById('avatarInput').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            document.getElementById('avatarInput').value = "";
+            document.getElementById('previewImage').src = "/assets/admin/images/UserImages/@ViewBag.CurrentUser.Avatar";
+        });
+    </script>
 }

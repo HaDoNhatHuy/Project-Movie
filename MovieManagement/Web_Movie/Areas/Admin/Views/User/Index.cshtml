@@ -56,7 +56,7 @@
             <thead>
                 <tr>
                     <th class="align-middle">#</th>
-                    <th class="align-middle">Họ & Tên</th>
+                    <th class="align-middle" width="200px">Họ & Tên</th>
                     <th class="align-middle">Avatar</th>
                     <th class="align-middle">Email</th>
                     <th class="align-middle">SĐT</th>
@@ -77,7 +77,7 @@
                             <td><img src="/assets/admin/images/UserImages/@item.Avatar" style="width:50px; border-radius: 5px;" /></td>
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
-                            <td>@item.Address</td>
+                            <td class="ellipsis-text">@item.Address</td>
                             <td>@item.Group?.Name</td>
                             <td>
                                 <a href="#" class="btn btn-sm text-white @((item.Status ? "bg-success" : "bg-danger"))" data-id="@item.Id">
@@ -130,6 +130,25 @@
             background-color: #dc3545 !important;
         }
 
+    </style>
+    <style>
+        .ellipsis-text {
+            display: inline-block;
+            max-width: 100px; /* Điều chỉnh độ rộng cho phù hợp */
+            white-space: nowrap; /* Ngăn việc xuống dòng */
+            overflow: hidden; /* Ẩn phần văn bản thừa */
+            text-overflow: ellipsis; /* Thêm dấu "..." khi văn bản bị cắt */
+            cursor: pointer; /* Thêm con trỏ chuột khi rê vào */
+            position: relative;
+        }
+
+            /* Hiển thị toàn bộ nội dung khi rê chuột vào */
+            .ellipsis-text:hover {
+                white-space: normal;
+                overflow: visible;
+                text-overflow: unset;
+                background-color: #f0f0f0; /* Tùy chọn: màu nền khi hover */
+            }
     </style>
 }
 @section Js {
