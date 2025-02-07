@@ -17,7 +17,7 @@ namespace Web_Movie.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var movieList = _context.Movies.Include(m => m.Category).Include(i => i.MovieImages).ToList();
+            var movieList = _context.Movies.Include(m => m.Category).ToList();
             return View(movieList);
         }
         public IActionResult Create()
@@ -26,7 +26,7 @@ namespace Web_Movie.Areas.Admin.Controllers
                 .Where(i => i.ParentId == Guid.Parse("0922c247-a6dc-42aa-855b-42bdfb6926e1"))
                 .ToList();
             var countryList = _context.Countries.ToList();
-            ViewBag.Countries = new SelectList(countryList,"CountryId","Name");
+            ViewBag.Countries = new SelectList(countryList, "CountryId", "Name");
             ViewBag.Categories = new SelectList(categoryList, "CategoryId", "CategoryName");
             return View();
         }
@@ -91,6 +91,8 @@ namespace Web_Movie.Areas.Admin.Controllers
                 .Where(i => i.ParentId == Guid.Parse("0922c247-a6dc-42aa-855b-42bdfb6926e1"))
                 .ToList();
             var countryList = _context.Countries.ToList();
+            var imageList = _context.MoviesImages.ToList();
+            ViewBag.MoreImages = imageList;
             ViewBag.Countries = new SelectList(countryList, "CountryId", "Name");
             ViewBag.Categories = new SelectList(categoryList, "CategoryId", "CategoryName");
             return View(movieExist);

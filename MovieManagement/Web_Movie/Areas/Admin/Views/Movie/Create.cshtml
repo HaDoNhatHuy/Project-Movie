@@ -11,18 +11,21 @@
     <form asp-action="Create" asp-controller="Movie" method="post" enctype="multipart/form-data" class="form-horizontal">
         <div class="card-body">
             <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-12">
                     <label for="MovieName" class=" form-label fw-bold ">Tên bộ phim</label>
                     <input type="text" asp-for="MovieName" placeholder="Vui lòng nhập tên bộ phim" class="form-control shadow-sm" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="PrimaryImage" class=" form-label fw-bold">Ảnh chính</label>
-                    <input type="file" asp-for="PrimaryImage" id="PrimaryImage" name="PrimaryImage" class="form-control shadow-sm" required>
+                    <label for="PrimaryImage" class="form-label fw-bold">Ảnh chính</label>
+                    <input type="file" asp-for="PrimaryImage" id="PrimaryImage" name="PrimaryImage"
+                           class="form-control shadow-sm" required accept="image/*"
+                           onchange="previewPrimaryImage(event)">
+                    <img id="previewPrimaryImage" src="#" alt="Ảnh xem trước" class="img-thumbnail mt-2 d-none" style="max-width: 200px; max-height: 200px;">
                 </div>
-                <div class="col-12">
-                    <label for="MoreImage" class=" form-label fw-bold">Ảnh liên quan</label>
-                    <input type="file" asp-for="MoreImage" id="MoreImage" name="MoreImage" class="form-control shadow-sm" multiple required>
-                    <small class="form-text text-muted">Chọn nhiều ảnh (Ctrl + Click hoặc Shift + Click để chọn nhiều ảnh)</small>
+                <div class="col-md-6">
+                    <label for="MoreImage" class="form-label fw-bold">Ảnh liên quan</label>
+                    <input type="file" asp-for="MoreImage" id="MoreImage" name="MoreImage" class="form-control shadow-sm" multiple required accept="image/*" onchange="previewMoreImages(event)">
+                    <div id="previewMoreImages" class="mt-2 d-flex flex-wrap gap-2"></div>
                 </div>
                 <div class="col-12">
                     <label for="Time" class=" form-label fw-bold">Thời lượng</label>
@@ -46,13 +49,13 @@
                     <label for="Quality" class="form-label fw-bold">Chất lượng phim</label>
                     <select asp-for="Quality" id="Quality" class="form-control shadow-sm" required>
                         <option value="">---- Chọn chất lượng phim ----</option>
-                        <option value="1">360p</option>
-                        <option value="2">480p</option>
-                        <option value="3">720p</option>
-                        <option value="4">1080p</option>
-                        <option value="5">1440p</option>
-                        <option value="6">2160p (2K)</option>
-                        <option value="7">4320p (4K)</option>
+                        <option value="360p">360p</option>
+                        <option value="480p">480p</option>
+                        <option value="720p">720p</option>
+                        <option value="1080p">1080p</option>
+                        <option value="1440p">1440p</option>
+                        <option value="2160p (2K)">2160p (2K)</option>
+                        <option value="4320p (4K)">4320p (4K)</option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -95,8 +98,53 @@
 @section Js {
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
     <script>
+        // Khởi tạo trình soạn thảo CKEditor cho phần mô tả
         ClassicEditor.create(document.querySelector("#Description"))
             .catch(error => console.error(error));
+
+        // Hiển thị ảnh xem trước cho ảnh chính (PrimaryImage)
+        document.getElementById("PrimaryImage").addEventListener("change", function (event) {
+            let input = event.target;
+            let preview = document.getElementById("previewPrimaryImage");
+
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove("d-none"); // Hiện ảnh nếu đang ẩn
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = "#";
+                preview.classList.add("d-none");
+            }
+        });
+
+        // Hiển thị ảnh xem trước cho nhiều ảnh liên quan (MoreImage)
+        document.getElementById("MoreImage").addEventListener("change", function (event) {
+            let input = event.target;
+            let previewContainer = document.getElementById("previewMoreImages");
+            previewContainer.innerHTML = ""; // Xóa ảnh cũ trước khi hiển thị ảnh mới
+
+            if (input.files) {
+                Array.from(input.files).forEach(file => {
+                    let reader = new FileReader();
+                    let img = document.createElement("img");
+                    img.classList.add("img-thumbnail", "m-1");
+                    img.style.maxWidth = "100px";
+                    img.style.maxHeight = "100px";
+
+                    reader.onload = function (e) {
+                        img.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(file);
+                    previewContainer.appendChild(img);
+                });
+            }
+        });
     </script>
 }
 
