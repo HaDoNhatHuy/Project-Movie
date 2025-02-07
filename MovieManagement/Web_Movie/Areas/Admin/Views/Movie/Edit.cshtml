@@ -17,13 +17,13 @@
                     <input type="text" asp-for="MovieName" placeholder="Vui lòng nhập tên bộ phim" class="form-control shadow-sm">
                 </div>
                 <div class="col-md-6">
-                    <label for="MoreImage" class=" form-label fw-bold">Ảnh</label>
-                    <input type="file" asp-for="MoreImage" id="MoreImage" name="MoreImage" class="form-control shadow-sm" multiple>
-                    <small class="form-text text-muted">Chọn nhiều ảnh (Ctrl + Click hoặc Shift + Click để chọn nhiều ảnh)</small>
-                </div>
-                <div class="col-12">
                     <label for="PrimaryImage" class=" form-label fw-bold">Ảnh chính</label>
                     <input type="file" asp-for="PrimaryImage" id="PrimaryImage" name="PrimaryImage" class="form-control shadow-sm">
+                </div>
+                <div class="col-md-12">
+                    <label for="MoreImage" class=" form-label fw-bold">Ảnh liên quan</label>
+                    <input type="file" asp-for="MoreImage" id="MoreImage" name="MoreImage" class="form-control shadow-sm" multiple>
+                    <small class="form-text text-muted">Chọn nhiều ảnh (Ctrl + Click hoặc Shift + Click để chọn nhiều ảnh)</small>
                 </div>
                 <div class="col-12">
                     <label for="Time" class=" form-label fw-bold">Thời lượng</label>
@@ -32,6 +32,37 @@
                 <div class="col-12">
                     <label for="Description" class="form-label fw-bold">Mô tả</label>
                     <textarea asp-for="Description" id="Description" name="Description" class="form-control shadow-sm"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="ReleaseDate" class="form-label fw-bold">Công chiếu</label>
+                    <input type="date" asp-for="ReleaseDate" id="ReleaseDate" name="ReleaseDate" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="CountryId" class="form-label fw-bold">Quốc gia</label>
+                    <select asp-for="CountryId" id="CountryId" class="form-control shadow-sm" asp-items="ViewBag.Countries" required>
+                        <option value="">---- Chọn quốc gia ----</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="Quality" class="form-label fw-bold">Chất lượng phim</label>
+                    <select asp-for="Quality" id="Quality" class="form-control shadow-sm" required>
+                        <option value="">---- Chọn chất lượng phim ----</option>
+                        <option value="1">360p</option>
+                        <option value="2">480p</option>
+                        <option value="3">720p</option>
+                        <option value="4">1080p</option>
+                        <option value="5">1440p</option>
+                        <option value="6">2160p (2K)</option>
+                        <option value="7">4320p (4K)</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="Age" class=" form-label fw-bold">Độ tuổi</label>
+                    <input type="number" asp-for="Age" id="Age" name="Age" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-12">
+                    <label for="TrailerLink" class=" form-label fw-bold ">Trailer Phim</label>
+                    <input type="text" asp-for="TrailerLink" placeholder="Vui lòng nhập link trailer bộ phim" class="form-control shadow-sm" required>
                 </div>
                 <div class="col-12">
                     <label for="Status" class="form-label fw-bold">Trạng thái</label>

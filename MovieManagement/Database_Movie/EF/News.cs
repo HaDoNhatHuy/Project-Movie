@@ -24,9 +24,6 @@ namespace Database_Movie.EF
         [ForeignKey("CountryId")]
         public Guid? CountryId { get; set; }
         public Country? Country { get; set; }
-        [ForeignKey("TrailerId")]
-        public Guid? TrailerId { get; set; }
-        public Trailer? Trailer { get; set; }
         [ForeignKey("MovieId")]
         public Guid? MovieId { get; set; }
         public Movie? Movie { get; set; }

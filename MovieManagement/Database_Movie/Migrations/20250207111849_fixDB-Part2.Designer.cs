@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20250204115651_fixImagesNew")]
-    partial class fixImagesNew
+    [Migration("20250207111849_fixDB-Part2")]
+    partial class fixDBPart2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -248,7 +248,7 @@ namespace Database_Movie.Migrations
                             AccessFailedCount = 0,
                             Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                             Avatar = "my-avatar.jpg",
-                            ConcurrencyStamp = "6ec72e68-c7fb-418c-beb8-801140e81848",
+                            ConcurrencyStamp = "921e8813-de33-4723-af66-5fa887952611",
                             Email = "nhathuy.hado@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Hà Đỗ Nhật Huy",
@@ -256,10 +256,10 @@ namespace Database_Movie.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
                             NormalizedUserName = "NHATHUY",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEVgofvI4NyeeHiGtORb1AGN9c6GTKX/MypLu3plaO4XGSSZCrFbVFLzWMrBf6BlVA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDtWC4/G7dHn8GdsqGKt7JaJlNsLY+y3zNwESLoPQ/B9mKUqwnwhlhCYDfsjuH2RJQ==",
                             PhoneNumber = "0399539455",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "079cc859-694b-479b-afec-8632e301c667",
+                            SecurityStamp = "baba0ca0-3c38-4673-bfb9-22aa2a0fd972",
                             Status = true,
                             TwoFactorEnabled = false,
                             UserName = "nhathuy"
@@ -602,6 +602,9 @@ namespace Database_Movie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
@@ -621,9 +624,6 @@ namespace Database_Movie.Migrations
                     b.Property<Guid?>("DirectorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -636,16 +636,27 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("MoreImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MovieLink")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MovieName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PrimaryImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Quality")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("Rating")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("ReleaseDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -656,13 +667,10 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("TopHot")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("TrailerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("TrailerLink")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Viewed")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("MovieId");
@@ -672,8 +680,6 @@ namespace Database_Movie.Migrations
                     b.HasIndex("CountryId");
 
                     b.HasIndex("DirectorId");
-
-                    b.HasIndex("TrailerId");
 
                     b.ToTable("Movie");
                 });
@@ -743,10 +749,6 @@ namespace Database_Movie.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MetaDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -762,11 +764,17 @@ namespace Database_Movie.Migrations
                     b.Property<string>("MoreDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MoreImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("MovieId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NewsTitle")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrimaryImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
@@ -778,9 +786,6 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("TopHot")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("TrailerId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("NewsId");
 
                     b.HasIndex("CategoryId");
@@ -790,8 +795,6 @@ namespace Database_Movie.Migrations
                     b.HasIndex("MovieId");
 
                     b.HasIndex("TagId");
-
-                    b.HasIndex("TrailerId");
 
                     b.ToTable("News");
                 });
@@ -1115,17 +1118,11 @@ namespace Database_Movie.Migrations
                         .WithMany("Movies")
                         .HasForeignKey("DirectorId");
 
-                    b.HasOne("Database_Movie.EF.Trailer", "Trailer")
-                        .WithMany("Movies")
-                        .HasForeignKey("TrailerId");
-
                     b.Navigation("Category");
 
                     b.Navigation("Country");
 
                     b.Navigation("Director");
-
-                    b.Navigation("Trailer");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.MovieActor", b =>
@@ -1170,10 +1167,6 @@ namespace Database_Movie.Migrations
                         .WithMany("News")
                         .HasForeignKey("TagId");
 
-                    b.HasOne("Database_Movie.EF.Trailer", "Trailer")
-                        .WithMany("News")
-                        .HasForeignKey("TrailerId");
-
                     b.Navigation("Category");
 
                     b.Navigation("Country");
@@ -1181,8 +1174,6 @@ namespace Database_Movie.Migrations
                     b.Navigation("Movie");
 
                     b.Navigation("Tag");
-
-                    b.Navigation("Trailer");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.NewsImage", b =>
@@ -1339,13 +1330,6 @@ namespace Database_Movie.Migrations
 
             modelBuilder.Entity("Database_Movie.EF.Tag", b =>
                 {
-                    b.Navigation("News");
-                });
-
-            modelBuilder.Entity("Database_Movie.EF.Trailer", b =>
-                {
-                    b.Navigation("Movies");
-
                     b.Navigation("News");
                 });
 #pragma warning restore 612, 618

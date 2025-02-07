@@ -302,12 +302,13 @@ namespace Database_Movie.Migrations
                 {
                     MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MovieName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrimaryImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MoreImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DirectorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Time = table.Column<int>(type: "int", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: true),
-                    MovieLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MovieLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Rating = table.Column<int>(type: "int", nullable: true),
@@ -486,7 +487,7 @@ namespace Database_Movie.Migrations
                     MovieImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsPrimary = table.Column<bool>(type: "bit", nullable: true)
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -504,7 +505,8 @@ namespace Database_Movie.Migrations
                 {
                     NewsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NewsTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrimaryImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MoreImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -613,7 +615,7 @@ namespace Database_Movie.Migrations
                     NewsImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NewsId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsPrimary = table.Column<bool>(type: "bit", nullable: true)
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -643,7 +645,7 @@ namespace Database_Movie.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Avatar", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "Email", "EmailConfirmed", "FullName", "GroupId", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "ModifiedDate", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleId", "SecurityStamp", "Status", "Token", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3453C2B8-58C8-439C-927F-BBB7B42A4C37", 0, "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An", "my-avatar.jpg", "3818e8b7-6b85-43f0-a080-eeafdac125ad", null, null, "nhathuy.hado@gmail.com", true, "Hà Đỗ Nhật Huy", new Guid("0157cb76-b588-4312-bd72-37f414a9193c"), false, null, null, null, "NHATHUY.HADO@GMAIL.COM", "NHATHUY", "AQAAAAIAAYagAAAAEMtxpUtGvqmO9cmGq344z940zEX/h+Qj7NOJZT6MMNQc/Rt6sub5y3CKV/vAc6RhUg==", "0399539455", false, null, "2f5a9936-ef34-4027-83a2-c95f3b9fe282", true, null, false, "nhathuy" });
+                values: new object[] { "3453C2B8-58C8-439C-927F-BBB7B42A4C37", 0, "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An", "my-avatar.jpg", "e24148ff-9e3d-47a7-ac2d-e3f4d38355d4", null, null, "nhathuy.hado@gmail.com", true, "Hà Đỗ Nhật Huy", new Guid("0157cb76-b588-4312-bd72-37f414a9193c"), false, null, null, null, "NHATHUY.HADO@GMAIL.COM", "NHATHUY", "AQAAAAIAAYagAAAAEBai90U+YKr+yuCi0osu9/Z3gqrH4wPhzYUGAnXQWeaX/x2NYpaekx5SqU2Zak59cQ==", "0399539455", false, null, "d3d19eeb-a73b-4dfc-b176-a369e0317589", true, null, false, "nhathuy" });
 
             migrationBuilder.InsertData(
                 table: "Category",

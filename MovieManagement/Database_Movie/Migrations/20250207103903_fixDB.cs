@@ -1,28 +1,31 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Database_Movie.Migrations
 {
     /// <inheritdoc />
-    public partial class fixImagesMovie : Migration
+    public partial class fixDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Image",
-                table: "News");
-
             migrationBuilder.RenameColumn(
-                name: "Image",
+                name: "Year",
                 table: "Movie",
-                newName: "PrimaryImage");
+                newName: "Age");
 
             migrationBuilder.AddColumn<string>(
-                name: "PrimaryImage",
-                table: "News",
+                name: "Quality",
+                table: "Movie",
                 type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "ReleaseDate",
+                table: "Movie",
+                type: "datetime2",
                 nullable: true);
 
             migrationBuilder.UpdateData(
@@ -30,34 +33,31 @@ namespace Database_Movie.Migrations
                 keyColumn: "Id",
                 keyValue: "3453C2B8-58C8-439C-927F-BBB7B42A4C37",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "6ac0d156-ad5d-4e43-8b88-6afa4775e917", "AQAAAAIAAYagAAAAED6bp5DSoC8hk7W/P7Mc5wkue/1nGJ1N46QY5FVVCL54HwF4xF/MEi4uPbotAOwOrQ==", "f48da18e-1097-4f7e-969a-66429b97a306" });
+                values: new object[] { "167e11f4-00a4-40d6-a93e-33c0ca86cd9c", "AQAAAAIAAYagAAAAEMXKO0qAGJUcZ4ane7WW/LZp7oZ6ku/AS5kOOzdM0WxP3ED4jd/od4aQBcXslkZoeQ==", "ad3dc200-f36f-4396-96c3-67284b5eec8d" });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "PrimaryImage",
-                table: "News");
+                name: "Quality",
+                table: "Movie");
+
+            migrationBuilder.DropColumn(
+                name: "ReleaseDate",
+                table: "Movie");
 
             migrationBuilder.RenameColumn(
-                name: "PrimaryImage",
+                name: "Age",
                 table: "Movie",
-                newName: "Image");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Image",
-                table: "News",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                newName: "Year");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: "3453C2B8-58C8-439C-927F-BBB7B42A4C37",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "6ec72e68-c7fb-418c-beb8-801140e81848", "AQAAAAIAAYagAAAAEEVgofvI4NyeeHiGtORb1AGN9c6GTKX/MypLu3plaO4XGSSZCrFbVFLzWMrBf6BlVA==", "079cc859-694b-479b-afec-8632e301c667" });
+                values: new object[] { "e24148ff-9e3d-47a7-ac2d-e3f4d38355d4", "AQAAAAIAAYagAAAAEBai90U+YKr+yuCi0osu9/Z3gqrH4wPhzYUGAnXQWeaX/x2NYpaekx5SqU2Zak59cQ==", "d3d19eeb-a73b-4dfc-b176-a369e0317589" });
         }
     }
 }

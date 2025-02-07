@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20250204121800_fixImagesColumnInMovieInNews")]
-    partial class fixImagesColumnInMovieInNews
+    [Migration("20250207101650_createDB")]
+    partial class createDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -248,7 +248,7 @@ namespace Database_Movie.Migrations
                             AccessFailedCount = 0,
                             Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                             Avatar = "my-avatar.jpg",
-                            ConcurrencyStamp = "5a9f68bf-e6a0-4d78-b457-46e05b9e3a48",
+                            ConcurrencyStamp = "e24148ff-9e3d-47a7-ac2d-e3f4d38355d4",
                             Email = "nhathuy.hado@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Hà Đỗ Nhật Huy",
@@ -256,10 +256,10 @@ namespace Database_Movie.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
                             NormalizedUserName = "NHATHUY",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKGSbaCEbRjYyvuIiBrCy7ous5R9BD6hRrpVlbIAF2lDYm9gzyQaAU253fnXvClKGg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBai90U+YKr+yuCi0osu9/Z3gqrH4wPhzYUGAnXQWeaX/x2NYpaekx5SqU2Zak59cQ==",
                             PhoneNumber = "0399539455",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "faf5be35-2cb5-484f-9d4d-6c1ec87e102c",
+                            SecurityStamp = "d3d19eeb-a73b-4dfc-b176-a369e0317589",
                             Status = true,
                             TwoFactorEnabled = false,
                             UserName = "nhathuy"
@@ -637,7 +637,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MovieLink")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MovieName")

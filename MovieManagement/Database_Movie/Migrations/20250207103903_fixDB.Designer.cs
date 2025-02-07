@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20250206073441_fixDB")]
+    [Migration("20250207103903_fixDB")]
     partial class fixDB
     {
         /// <inheritdoc />
@@ -248,7 +248,7 @@ namespace Database_Movie.Migrations
                             AccessFailedCount = 0,
                             Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                             Avatar = "my-avatar.jpg",
-                            ConcurrencyStamp = "6394b270-ff80-4f10-b2d3-3d3b6eafa773",
+                            ConcurrencyStamp = "167e11f4-00a4-40d6-a93e-33c0ca86cd9c",
                             Email = "nhathuy.hado@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Hà Đỗ Nhật Huy",
@@ -256,10 +256,10 @@ namespace Database_Movie.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
                             NormalizedUserName = "NHATHUY",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDTqHbdn0/HHmulvAPJK07DyP1wiLl6pKv8u2UYdjO3JFclTqSrypMhKdlKdOIsX5g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMXKO0qAGJUcZ4ane7WW/LZp7oZ6ku/AS5kOOzdM0WxP3ED4jd/od4aQBcXslkZoeQ==",
                             PhoneNumber = "0399539455",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "252f8fdb-b83d-4ff9-855f-57c8558166c2",
+                            SecurityStamp = "ad3dc200-f36f-4396-96c3-67284b5eec8d",
                             Status = true,
                             TwoFactorEnabled = false,
                             UserName = "nhathuy"
@@ -602,6 +602,9 @@ namespace Database_Movie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
@@ -646,8 +649,14 @@ namespace Database_Movie.Migrations
                     b.Property<string>("PrimaryImage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Quality")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("Rating")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("ReleaseDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -662,9 +671,6 @@ namespace Database_Movie.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("Viewed")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("MovieId");

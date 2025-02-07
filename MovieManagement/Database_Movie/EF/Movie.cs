@@ -21,8 +21,9 @@ namespace Database_Movie.EF
         public Director? Director { get; set; }
         public string Description { get; set; }
         public int Time { get; set; }
-        public int? Year { get; set; }
+        public DateTime? ReleaseDate { get; set; }
         public string? MovieLink { get; set; }
+        public string? TrailerLink { get; set; }
         [ForeignKey("CategoryId")]
         public Guid? CategoryId { get; set; }
         public Category? Category { get; set; }
@@ -30,10 +31,9 @@ namespace Database_Movie.EF
         public Guid? CountryId { get; set; }
         public Country? Country { get; set; }
         public int? Rating { get; set; }
-        [ForeignKey("TrailerId")]
-        public Guid? TrailerId { get; set; }
-        public Trailer? Trailer { get; set; }
         public int? Viewed { get; set; }
+        public string? Quality { get; set; }
+        public int? Age { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string? CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }

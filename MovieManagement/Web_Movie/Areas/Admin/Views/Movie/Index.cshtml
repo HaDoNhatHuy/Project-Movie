@@ -82,7 +82,7 @@
                     {
                         <tr class="align-middle">
                             <td>@key</td>
-                            <td><a asp-action="Detail" asp-controller="Movie" asp-route-MovieId="@item.MovieId">@item.MovieName</a></td>
+                            <td>@item.MovieName</td>
                             <td><img src="/assets/admin/images/MovieImages/@item.PrimaryImage" style="width:100px; border-radius: 5px;" /></td>
                             
                             @* <td>@item.Directors</td> *@
@@ -110,6 +110,9 @@
                                     </a>
                                     <a asp-action="Delete" asp-route-id="@item.MovieId" class="btn btn-danger btn-sm mx-1 confirmDeletion" data-toggle="tooltip" title="Xóa">
                                         <i class="zmdi zmdi-delete"></i>
+                                    </a>
+                                    <a asp-action="Detail" asp-controller="Movie" asp-route-MovieId="@item.MovieId" class="btn btn-primary btn-sm mx-1" data-toggle="tooltip" title="Xem chi tiết">
+                                        <i class="zmdi zmdi-eye"></i>
                                     </a>
                                 </div>
                             </td>
