@@ -111,6 +111,7 @@ namespace Web_Movie.Areas.Admin.Controllers
             movieExist.Description = movie.Description;
             movieExist.Time = movie.Time;
             movieExist.ReleaseDate = movie.ReleaseDate;
+            movieExist.MovieLink = movie.MovieLink; // thêm dô để test Github coi đẩy lên được chưa
             movieExist.CountryId = movie.CountryId;
             movieExist.Age = movie.Age;
             movieExist.Quality = movie.Quality;
