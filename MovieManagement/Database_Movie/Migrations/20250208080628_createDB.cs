@@ -235,6 +235,55 @@ namespace Database_Movie.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Movie",
+                columns: table => new
+                {
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MovieName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrimaryImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MoreImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DirectorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Time = table.Column<int>(type: "int", nullable: false),
+                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MovieLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TrailerLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Rating = table.Column<int>(type: "int", nullable: true),
+                    Viewed = table.Column<int>(type: "int", nullable: true),
+                    Quality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Age = table.Column<int>(type: "int", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MetaKeywords = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MetaDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    TopHot = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movie", x => x.MovieId);
+                    table.ForeignKey(
+                        name: "FK_Movie_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "CategoryId");
+                    table.ForeignKey(
+                        name: "FK_Movie_Country_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Country",
+                        principalColumn: "CountryId");
+                    table.ForeignKey(
+                        name: "FK_Movie_Director_DirectorId",
+                        column: x => x.DirectorId,
+                        principalTable: "Director",
+                        principalColumn: "DirectorId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -297,55 +346,148 @@ namespace Database_Movie.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movie",
+                name: "MovieActor",
                 columns: table => new
                 {
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MovieName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ActorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieActor", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MovieActor_Actor_ActorId",
+                        column: x => x.ActorId,
+                        principalTable: "Actor",
+                        principalColumn: "ActorId");
+                    table.ForeignKey(
+                        name: "FK_MovieActor_Movie_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movie",
+                        principalColumn: "MovieId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MovieImage",
+                columns: table => new
+                {
+                    MovieImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieImage", x => x.MovieImageId);
+                    table.ForeignKey(
+                        name: "FK_MovieImage_Movie_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movie",
+                        principalColumn: "MovieId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "News",
+                columns: table => new
+                {
+                    NewsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NewsTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PrimaryImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MoreImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DirectorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Time = table.Column<int>(type: "int", nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: true),
-                    MovieLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Rating = table.Column<int>(type: "int", nullable: true),
-                    TrailerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Viewed = table.Column<int>(type: "int", nullable: true),
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    TopHot = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    MoreDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MetaKeywords = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MetaDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    TopHot = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    MetaDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movie", x => x.MovieId);
+                    table.PrimaryKey("PK_News", x => x.NewsId);
                     table.ForeignKey(
-                        name: "FK_Movie_Category_CategoryId",
+                        name: "FK_News_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
                         principalColumn: "CategoryId");
                     table.ForeignKey(
-                        name: "FK_Movie_Country_CountryId",
+                        name: "FK_News_Country_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Country",
                         principalColumn: "CountryId");
                     table.ForeignKey(
-                        name: "FK_Movie_Director_DirectorId",
-                        column: x => x.DirectorId,
-                        principalTable: "Director",
-                        principalColumn: "DirectorId");
+                        name: "FK_News_Movie_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movie",
+                        principalColumn: "MovieId");
                     table.ForeignKey(
-                        name: "FK_Movie_Trailer_TrailerId",
-                        column: x => x.TrailerId,
-                        principalTable: "Trailer",
-                        principalColumn: "TrailerId");
+                        name: "FK_News_Tag_TagId",
+                        column: x => x.TagId,
+                        principalTable: "Tag",
+                        principalColumn: "TagId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FavoriteList",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    AddedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavoriteList", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FavoriteList_Movie_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movie",
+                        principalColumn: "MovieId");
+                    table.ForeignKey(
+                        name: "FK_FavoriteList_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Review",
+                columns: table => new
+                {
+                    ReviewId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Review", x => x.ReviewId);
+                    table.ForeignKey(
+                        name: "FK_Review_Movie_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movie",
+                        principalColumn: "MovieId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Review_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -434,157 +576,6 @@ namespace Database_Movie.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FavoriteList",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    AddedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FavoriteList", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FavoriteList_Movie_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movie",
-                        principalColumn: "MovieId");
-                    table.ForeignKey(
-                        name: "FK_FavoriteList_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MovieActor",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    ActorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MovieActor", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MovieActor_Actor_ActorId",
-                        column: x => x.ActorId,
-                        principalTable: "Actor",
-                        principalColumn: "ActorId");
-                    table.ForeignKey(
-                        name: "FK_MovieActor_Movie_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movie",
-                        principalColumn: "MovieId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MovieImage",
-                columns: table => new
-                {
-                    MovieImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MovieImage", x => x.MovieImageId);
-                    table.ForeignKey(
-                        name: "FK_MovieImage_Movie_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movie",
-                        principalColumn: "MovieId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "News",
-                columns: table => new
-                {
-                    NewsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NewsTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PrimaryImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MoreImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    TrailerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    TopHot = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    MoreDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MetaKeywords = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MetaDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_News", x => x.NewsId);
-                    table.ForeignKey(
-                        name: "FK_News_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
-                        principalColumn: "CategoryId");
-                    table.ForeignKey(
-                        name: "FK_News_Country_CountryId",
-                        column: x => x.CountryId,
-                        principalTable: "Country",
-                        principalColumn: "CountryId");
-                    table.ForeignKey(
-                        name: "FK_News_Movie_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movie",
-                        principalColumn: "MovieId");
-                    table.ForeignKey(
-                        name: "FK_News_Tag_TagId",
-                        column: x => x.TagId,
-                        principalTable: "Tag",
-                        principalColumn: "TagId");
-                    table.ForeignKey(
-                        name: "FK_News_Trailer_TrailerId",
-                        column: x => x.TrailerId,
-                        principalTable: "Trailer",
-                        principalColumn: "TrailerId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Review",
-                columns: table => new
-                {
-                    ReviewId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Review", x => x.ReviewId);
-                    table.ForeignKey(
-                        name: "FK_Review_Movie_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movie",
-                        principalColumn: "MovieId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Review_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "WatchHistory",
                 columns: table => new
                 {
@@ -645,7 +636,7 @@ namespace Database_Movie.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Avatar", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "Email", "EmailConfirmed", "FullName", "GroupId", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "ModifiedDate", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleId", "SecurityStamp", "Status", "Token", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3453C2B8-58C8-439C-927F-BBB7B42A4C37", 0, "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An", "my-avatar.jpg", "e24148ff-9e3d-47a7-ac2d-e3f4d38355d4", null, null, "nhathuy.hado@gmail.com", true, "Hà Đỗ Nhật Huy", new Guid("0157cb76-b588-4312-bd72-37f414a9193c"), false, null, null, null, "NHATHUY.HADO@GMAIL.COM", "NHATHUY", "AQAAAAIAAYagAAAAEBai90U+YKr+yuCi0osu9/Z3gqrH4wPhzYUGAnXQWeaX/x2NYpaekx5SqU2Zak59cQ==", "0399539455", false, null, "d3d19eeb-a73b-4dfc-b176-a369e0317589", true, null, false, "nhathuy" });
+                values: new object[] { "3453C2B8-58C8-439C-927F-BBB7B42A4C37", 0, "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An", "my-avatar.jpg", "6588d9fb-76f8-479d-888d-f2934b94c6d6", null, null, "nhathuy.hado@gmail.com", true, "Hà Đỗ Nhật Huy", new Guid("0157cb76-b588-4312-bd72-37f414a9193c"), false, null, null, null, "NHATHUY.HADO@GMAIL.COM", "NHATHUY", "AQAAAAIAAYagAAAAELaU4lUVKYwDOCfsz7ihM/sBko1npr7M0HDITaTGRuiFVKrinjTX+E7taufbAJIH+g==", "0399539455", false, null, "60387e4e-6367-4016-ad7f-b6642df139e3", true, null, false, "nhathuy" });
 
             migrationBuilder.InsertData(
                 table: "Category",
@@ -697,11 +688,6 @@ namespace Database_Movie.Migrations
                 column: "DirectorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Movie_TrailerId",
-                table: "Movie",
-                column: "TrailerId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_MovieActor_ActorId",
                 table: "MovieActor",
                 column: "ActorId");
@@ -735,11 +721,6 @@ namespace Database_Movie.Migrations
                 name: "IX_News_TagId",
                 table: "News",
                 column: "TagId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_News_TrailerId",
-                table: "News",
-                column: "TrailerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NewsImage_NewsId",
@@ -848,6 +829,9 @@ namespace Database_Movie.Migrations
                 name: "RoleClaims");
 
             migrationBuilder.DropTable(
+                name: "Trailer");
+
+            migrationBuilder.DropTable(
                 name: "UserClaims");
 
             migrationBuilder.DropTable(
@@ -891,9 +875,6 @@ namespace Database_Movie.Migrations
 
             migrationBuilder.DropTable(
                 name: "Director");
-
-            migrationBuilder.DropTable(
-                name: "Trailer");
         }
     }
 }

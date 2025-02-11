@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20250207103903_fixDB")]
-    partial class fixDB
+    [Migration("20250208080628_createDB")]
+    partial class createDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -248,7 +248,7 @@ namespace Database_Movie.Migrations
                             AccessFailedCount = 0,
                             Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                             Avatar = "my-avatar.jpg",
-                            ConcurrencyStamp = "167e11f4-00a4-40d6-a93e-33c0ca86cd9c",
+                            ConcurrencyStamp = "6588d9fb-76f8-479d-888d-f2934b94c6d6",
                             Email = "nhathuy.hado@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Hà Đỗ Nhật Huy",
@@ -256,10 +256,10 @@ namespace Database_Movie.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
                             NormalizedUserName = "NHATHUY",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMXKO0qAGJUcZ4ane7WW/LZp7oZ6ku/AS5kOOzdM0WxP3ED4jd/od4aQBcXslkZoeQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELaU4lUVKYwDOCfsz7ihM/sBko1npr7M0HDITaTGRuiFVKrinjTX+E7taufbAJIH+g==",
                             PhoneNumber = "0399539455",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ad3dc200-f36f-4396-96c3-67284b5eec8d",
+                            SecurityStamp = "60387e4e-6367-4016-ad7f-b6642df139e3",
                             Status = true,
                             TwoFactorEnabled = false,
                             UserName = "nhathuy"
@@ -667,8 +667,8 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("TopHot")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("TrailerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("TrailerLink")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Viewed")
                         .HasColumnType("int");
@@ -680,8 +680,6 @@ namespace Database_Movie.Migrations
                     b.HasIndex("CountryId");
 
                     b.HasIndex("DirectorId");
-
-                    b.HasIndex("TrailerId");
 
                     b.ToTable("Movie");
                 });
@@ -788,9 +786,6 @@ namespace Database_Movie.Migrations
                     b.Property<DateTime?>("TopHot")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("TrailerId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("NewsId");
 
                     b.HasIndex("CategoryId");
@@ -800,8 +795,6 @@ namespace Database_Movie.Migrations
                     b.HasIndex("MovieId");
 
                     b.HasIndex("TagId");
-
-                    b.HasIndex("TrailerId");
 
                     b.ToTable("News");
                 });
@@ -1125,17 +1118,11 @@ namespace Database_Movie.Migrations
                         .WithMany("Movies")
                         .HasForeignKey("DirectorId");
 
-                    b.HasOne("Database_Movie.EF.Trailer", "Trailer")
-                        .WithMany("Movies")
-                        .HasForeignKey("TrailerId");
-
                     b.Navigation("Category");
 
                     b.Navigation("Country");
 
                     b.Navigation("Director");
-
-                    b.Navigation("Trailer");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.MovieActor", b =>
@@ -1180,10 +1167,6 @@ namespace Database_Movie.Migrations
                         .WithMany("News")
                         .HasForeignKey("TagId");
 
-                    b.HasOne("Database_Movie.EF.Trailer", "Trailer")
-                        .WithMany("News")
-                        .HasForeignKey("TrailerId");
-
                     b.Navigation("Category");
 
                     b.Navigation("Country");
@@ -1191,8 +1174,6 @@ namespace Database_Movie.Migrations
                     b.Navigation("Movie");
 
                     b.Navigation("Tag");
-
-                    b.Navigation("Trailer");
                 });
 
             modelBuilder.Entity("Database_Movie.EF.NewsImage", b =>
@@ -1349,13 +1330,6 @@ namespace Database_Movie.Migrations
 
             modelBuilder.Entity("Database_Movie.EF.Tag", b =>
                 {
-                    b.Navigation("News");
-                });
-
-            modelBuilder.Entity("Database_Movie.EF.Trailer", b =>
-                {
-                    b.Navigation("Movies");
-
                     b.Navigation("News");
                 });
 #pragma warning restore 612, 618

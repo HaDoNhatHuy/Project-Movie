@@ -1,0 +1,56 @@
+﻿@model Director
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow-lg border-0 rounded">
+    <div class="card-header">
+        <h4 class="m-0">Cập nhật Diễn viên</h4>
+    </div>
+    <form asp-action="Edit" asp-controller="Director" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <input type="hidden" asp-for="DirectorId" />
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="Name" class=" form-label fw-bold ">Tên diễn viên</label>
+                    <input type="text" asp-for="Name" placeholder="Vui lòng nhập tên diễn viên" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="ProfileImage" class=" form-label fw-bold">Ảnh đại diện</label>
+                    <input type="file" asp-for="ProfileImage" id="ProfileImage" name="ProfileImage" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-12">
+                    <label for="Nationality" class=" form-label fw-bold">Quốc tịch</label>
+                    <input type="text" asp-for="Nationality" id="Nationality" name="Nationality" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-12">
+                    <label for="DateOfBirth" class="form-label fw-bold">Ngày sinh</label>
+                    <input type="date" asp-for="DateOfBirth" id="DateOfBirth" name="DateOfBirth" class="form-control shadow-sm" required>
+                </div>
+                <div class="col-12">
+                    <label for="Biography" class="form-label fw-bold">Tiểu sử</label>
+                    <textarea asp-for="Biography" id="Biography" name="Biography" class="form-control shadow-sm"></textarea>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button type="submit" class="btn btn-success shadow-sm">
+                <i class="fa fa-check-circle"></i> Lưu
+            </button>
+            <button type="reset" class="btn btn-warning shadow-sm text-white">
+                <i class="fa fa-undo"></i> Làm lại
+            </button>
+            <a asp-action="Index" asp-controller="Director" class="btn btn-secondary shadow-sm">
+                <i class="fa fa-arrow-left"></i> Trở lại
+            </a>
+        </div>
+    </form>
+</div>
+@section Js {
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector("#Biography"))
+            .catch(error => console.error(error));
+    </script>
+}

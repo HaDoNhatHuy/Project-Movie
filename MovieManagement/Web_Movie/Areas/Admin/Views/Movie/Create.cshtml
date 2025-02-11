@@ -25,6 +25,7 @@
                 <div class="col-md-6">
                     <label for="MoreImage" class="form-label fw-bold">Ảnh liên quan</label>
                     <input type="file" asp-for="MoreImage" id="MoreImage" name="MoreImage" class="form-control shadow-sm" multiple required accept="image/*" onchange="previewMoreImages(event)">
+                    <small class="form-text text-muted">Chọn nhiều ảnh (Ctrl + Click hoặc Shift + Click để chọn nhiều ảnh)</small>
                     <div id="previewMoreImages" class="mt-2 d-flex flex-wrap gap-2"></div>
                 </div>
                 <div class="col-12">
@@ -66,6 +67,29 @@
                     <label for="TrailerLink" class=" form-label fw-bold ">Trailer Phim</label>
                     <input type="text" asp-for="TrailerLink" placeholder="Vui lòng nhập link trailer bộ phim" class="form-control shadow-sm" required>
                 </div>
+                <div class="col-md-6">
+                    <label for="DirectorId" class="form-label fw-bold">Đạo diễn</label>
+                    <div class="d-flex">
+                        <select asp-for="DirectorId" id="DirectorId" class="form-control shadow-sm" asp-items="ViewBag.Directors" required>
+                            <option value="">---- Chọn đạo diễn ----</option>
+                        </select>
+                        <button type="button" id="btnAddDirector" class="btn btn-primary ms-2">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="ActorId" class="form-label fw-bold">Diễn viên</label>
+                    <div class="d-flex w-100">
+                        <select id="ActorId" class="form-control shadow-sm select2 w-100" multiple asp-items="ViewBag.Actors" required>
+                        </select>
+                        <input type="hidden" name="ActorIds" id="ActorIdsHidden">
+                        <button type="button" id="btnAddActor" class="btn btn-primary ms-2">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
                 <div class="col-12">
                     <label for="Status" class="form-label fw-bold">Trạng thái</label>
                     <select asp-for="Status" id="Status" class="form-control shadow-sm" required>
@@ -95,8 +119,111 @@
         </div>
     </form>
 </div>
+<!-- Modal Thêm Đạo Diễn -->
+<div class="modal" id="addDirectorModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm Đạo Diễn</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="directorForm" enctype="multipart/form-data">
+                    <input type="text" name="Name" class="form-control" placeholder="Nhập tên đạo diễn" required>
+                    <input type="file" name="ProfileImage" class="form-control">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success" id="saveDirectorBtn">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Thêm Diễn Viên -->
+<div class="modal fade" id="addActorModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm Diễn Viên</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="actorForm" enctype="multipart/form-data">
+                    <input type="text" name="Name" class="form-control" placeholder="Nhập tên diễn viên" required>
+                    <input type="file" name="ProfileImage" class="form-control">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success" id="saveActorBtn">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Css {
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        .select2-container {
+            width: 100% !important; /* Ép Select2 rộng bằng container */
+        }
+
+        .select2-selection {
+            min-height: 38px !important; /* Điều chỉnh chiều cao giống input */
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .modal-backdrop {
+            display: none !important;
+        }
+
+    </style>
+
+}
 @section Js {
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+    <!--Select 2-->
+    @* <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> *@
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Kích hoạt Select2 cho Đạo diễn (DirectorId)
+            $("#DirectorId").select2({
+                placeholder: "---- Chọn đạo diễn ----",
+                allowClear: true,
+                width: '100%'
+            });
+
+            // Kích hoạt Select2 cho Diễn viên (ActorId)
+            $("#ActorId").select2({
+                placeholder: "---- Chọn diễn viên ----",
+                allowClear: true,
+                width: '100%'
+            });
+
+            // Cập nhật danh sách ActorId vào input ẩn trước khi submit form
+            $("form").submit(function () {
+                let selectedActors = $("#ActorId").val(); // Lấy danh sách ActorId đã chọn
+                if (selectedActors) {
+                    $("#ActorIdsHidden").val(selectedActors.join(",")); // Gán vào input hidden dưới dạng "guid1,guid2,guid3"
+                }
+            });
+        });
+    </script>
     <script>
         // Khởi tạo trình soạn thảo CKEditor cho phần mô tả
         ClassicEditor.create(document.querySelector("#Description"))
@@ -146,5 +273,59 @@
             }
         });
     </script>
-}
 
+    <script>
+        $(document).ready(function () {
+            // Khi nhấn nút "Thêm Đạo Diễn", mở modal thêm đạo diễn
+            $("#btnAddDirector").click(function () {
+                $("#addDirectorModal").modal("show");
+            });
+
+            // Khi nhấn nút "Thêm Diễn Viên", mở modal thêm diễn viên
+            $("#btnAddActor").click(function () {
+                $("#addActorModal").modal("show");
+            });
+
+            // Xử lý thêm Đạo Diễn
+            $("#saveDirectorBtn").click(function () {
+                var formData = new FormData($("#directorForm")[0]);
+
+                $.ajax({
+                    url: "/Admin/Director/Create",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function () {
+                        $("#addDirectorModal").modal("hide"); // Đóng modal
+                        location.reload(); // Reload trang để cập nhật danh sách
+                    },
+                    error: function () {
+                        alert("Lỗi! Không thể thêm đạo diễn.");
+                    }
+                });
+            });
+
+            // Xử lý thêm Diễn Viên
+            $("#saveActorBtn").click(function () {
+                var formData = new FormData($("#actorForm")[0]);
+
+                $.ajax({
+                    url: "/Admin/Actor/Create",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function () {
+                        $("#addActorModal").modal("hide"); // Đóng modal
+                        location.reload(); // Reload trang để cập nhật danh sách
+                    },
+                    error: function () {
+                        alert("Lỗi! Không thể thêm diễn viên.");
+                    }
+                });
+            });
+        });
+    </script>
+
+}

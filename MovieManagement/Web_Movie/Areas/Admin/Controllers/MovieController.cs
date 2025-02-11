@@ -25,13 +25,20 @@ namespace Web_Movie.Areas.Admin.Controllers
             var categoryList = _context.Categories
                 .Where(i => i.ParentId == Guid.Parse("0922c247-a6dc-42aa-855b-42bdfb6926e1"))
                 .ToList();
+            ViewBag.Categories = new SelectList(categoryList, "CategoryId", "CategoryName");
+
             var countryList = _context.Countries.ToList();
             ViewBag.Countries = new SelectList(countryList, "CountryId", "Name");
-            ViewBag.Categories = new SelectList(categoryList, "CategoryId", "CategoryName");
+
+            var actorList = _context.Actors.ToList();
+            ViewBag.Actors = new SelectList(actorList, "ActorId", "Name");
+
+            var directorList = _context.Directors.ToList();
+            ViewBag.Directors = new SelectList(directorList, "DirectorId", "Name");
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Movie movie, IFormFile[] MoreImage, IFormFile PrimaryImage)
+        public async Task<IActionResult> Create(Movie movie, IFormFile[] MoreImage, IFormFile PrimaryImage, string ActorIds)
         {
             var movieModel = new Movie();
             movieModel.MovieId = Guid.NewGuid();
@@ -45,6 +52,7 @@ namespace Web_Movie.Areas.Admin.Controllers
             movieModel.Status = movie.Status;
             movieModel.TrailerLink = movie.TrailerLink;
             movieModel.CategoryId = movie.CategoryId;
+            movieModel.DirectorId = movie.DirectorId;
             if (PrimaryImage != null)
             {
                 var path = Path.Combine(this._environment.WebRootPath, "assets/admin/images/MovieImages/", PrimaryImage.FileName);//lấy đường dẫn hình
@@ -81,6 +89,24 @@ namespace Web_Movie.Areas.Admin.Controllers
                     }
                 }
             }
+            // 🔹 Lưu danh sách diễn viên vào bảng MovieActors
+            if (!string.IsNullOrEmpty(ActorIds))
+            {
+                var actorIdsList = ActorIds.Split(',') // Tách danh sách ID
+                                           .Where(id => Guid.TryParse(id, out _)) // Kiểm tra xem có phải Guid hợp lệ không
+                                           .Select(Guid.Parse) // Chuyển thành danh sách Guid
+                                           .ToList();
+
+                foreach (var actorId in actorIdsList)
+                {
+                    _context.MoviesActors.Add(new MovieActor
+                    {
+                        MovieId = movieModel.MovieId,
+                        ActorId = actorId
+                    });
+                }
+                await _context.SaveChangesAsync();
+            }
             TempData["success"] = "Thêm thành công";
             return RedirectToAction("Index");
         }
@@ -111,7 +137,6 @@ namespace Web_Movie.Areas.Admin.Controllers
             movieExist.Description = movie.Description;
             movieExist.Time = movie.Time;
             movieExist.ReleaseDate = movie.ReleaseDate;
-            movieExist.MovieLink = movie.MovieLink; // thêm dô để test Github coi đẩy lên được chưa
             movieExist.CountryId = movie.CountryId;
             movieExist.Age = movie.Age;
             movieExist.Quality = movie.Quality;
@@ -221,7 +246,15 @@ namespace Web_Movie.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Detail(Guid MovieId)
         {
-            var movieDetail = _context.Movies.Where(i => i.MovieId == MovieId).Include(i => i.Country).Include(i => i.MovieImages).Include(i => i.Category).FirstOrDefault();
+            var movieDetail = _context.Movies
+                .Where(i => i.MovieId == MovieId)
+                .Include(i => i.Country)
+                .Include(i => i.MovieImages)
+                .Include(i => i.Director)
+                .Include(i => i.MovieActors)
+                    .ThenInclude(ma => ma.Actor) // Lấy danh sách diễn viên
+                .Include(i => i.Category)
+                .FirstOrDefault();
             if (movieDetail == null) { return NotFound(); }
             return View(movieDetail);
         }

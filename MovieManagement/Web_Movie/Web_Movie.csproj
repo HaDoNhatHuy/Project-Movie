@@ -39,6 +39,8 @@
     <Folder Include="wwwroot\assets\admin\ckeditor\plugins\imagebase\styles\" />
     <Folder Include="wwwroot\assets\admin\ckeditor\samples\old\easyimage\" />
     <Folder Include="wwwroot\assets\admin\ckfinder\core\connector\aspx\files\" />
+    <Folder Include="wwwroot\assets\admin\images\ActorImages\" />
+    <Folder Include="wwwroot\assets\admin\images\DirectorImages\" />
     <Folder Include="wwwroot\assets\admin\images\NewsImages\" />
   </ItemGroup>
 
