@@ -55,8 +55,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthorization();
+app.UseAuthentication();//Login - Before
+app.UseAuthorization();//Check Roles - After
 
 app.MapControllerRoute(
     name: "Areas",

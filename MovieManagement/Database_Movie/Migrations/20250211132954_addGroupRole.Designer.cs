@@ -4,6 +4,7 @@ using Database_Movie.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database_Movie.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20250211132954_addGroupRole")]
+    partial class addGroupRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,11 +208,17 @@ namespace Database_Movie.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -239,7 +248,7 @@ namespace Database_Movie.Migrations
                             AccessFailedCount = 0,
                             Address = "384/5, Ấp Bà Phổ, xã Bình Thạnh, huyện Thủ Thừa, tỉnh Long An",
                             Avatar = "my-avatar.jpg",
-                            ConcurrencyStamp = "e375dc4f-2d9c-47d1-8bde-c0105ecf6f5d",
+                            ConcurrencyStamp = "e6cd6475-bc1c-4443-9133-68dbc63df466",
                             Email = "nhathuy.hado@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Hà Đỗ Nhật Huy",
@@ -247,10 +256,10 @@ namespace Database_Movie.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NHATHUY.HADO@GMAIL.COM",
                             NormalizedUserName = "NHATHUY",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPt78CqxLQuWqTA1YLjfDStQKrxB1yClSbQiesbmaANRaPBVeKYJ5dEAT8OLrsIUiA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFDNDuSYahYHC6JdDZTSZvnugbUe3xQTsFum+GvABj/TBbPc8/UC+38AF5EmUiTmKQ==",
                             PhoneNumber = "0399539455",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0c2ef7b2-ad4c-4a83-ae61-caac175788af",
+                            SecurityStamp = "145747ca-48ea-4656-b193-fdfc1ee05477",
                             Status = true,
                             TwoFactorEnabled = false,
                             UserName = "nhathuy"
@@ -976,26 +985,6 @@ namespace Database_Movie.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "9d158b8e-0c8e-4168-8d22-ef4432d3532f",
-                            Name = "view-movies",
-                            NormalizedName = "VIEW-MOVIES"
-                        },
-                        new
-                        {
-                            Id = "a4538b26-d0f1-48b4-9404-555ae8bca8de",
-                            Name = "edit-news",
-                            NormalizedName = "EDIT-NEWS"
-                        },
-                        new
-                        {
-                            Id = "1335b967-3b79-4966-b5e1-c6876c214208",
-                            Name = "delete-comments",
-                            NormalizedName = "DELETE-COMMENTS"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1140,7 +1129,7 @@ namespace Database_Movie.Migrations
             modelBuilder.Entity("Database_Movie.EF.GroupRole", b =>
                 {
                     b.HasOne("Database_Movie.EF.Group", "Group")
-                        .WithMany("GroupRoles")
+                        .WithMany()
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1357,8 +1346,6 @@ namespace Database_Movie.Migrations
 
             modelBuilder.Entity("Database_Movie.EF.Group", b =>
                 {
-                    b.Navigation("GroupRoles");
-
                     b.Navigation("Users");
                 });
 

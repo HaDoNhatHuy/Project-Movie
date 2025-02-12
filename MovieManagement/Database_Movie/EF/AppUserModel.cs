@@ -8,8 +8,8 @@ namespace Database_Movie.EF
         public string FullName { get; set; }
         public string? Address { get; set; }
         public string? Avatar { get; set; }
-        public string? RoleId { get; set; }
-        public string? Token { get; set; }
+        //public string? RoleId { get; set; }
+        //public string? Token { get; set; }
         [ForeignKey("GroupId")]
         public Guid? GroupId { get; set; }
         public Group? Group { get; set; }

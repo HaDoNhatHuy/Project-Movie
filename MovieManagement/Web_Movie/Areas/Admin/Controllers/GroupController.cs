@@ -67,6 +67,5 @@ namespace Web_Movie.Areas.Admin.Controllers
             TempData["success"] = "Xóa nhóm quyền thành công";
             return RedirectToAction("Index");
         }
-
     }
 }

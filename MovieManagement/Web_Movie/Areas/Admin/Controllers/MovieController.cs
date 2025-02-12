@@ -1,11 +1,14 @@
 ﻿using Database_Movie.EF;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Web_Movie.Areas.Admin.Atrributes;
 
 namespace Web_Movie.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]  // Chỉ những người đã đăng nhập mới vào được    
     public class MovieController : Controller
     {
         private readonly MovieContext _context;
@@ -15,6 +18,7 @@ namespace Web_Movie.Areas.Admin.Controllers
             _context = context;
             _environment = environment;
         }
+        [Authorized("view-movies")] // Chỉ những người có quyền "view-movies"
         public IActionResult Index()
         {
             var movieList = _context.Movies.Include(m => m.Category).ToList();

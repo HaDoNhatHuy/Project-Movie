@@ -156,6 +156,11 @@ namespace Database_Movie.EF
                     ParentId = Guid.Parse("0922C247-A6DC-42AA-855B-42BDFB6926E1"),
                     Status = true,
                 });
+            modelBuilder.Entity<IdentityRole>().HasData(
+            new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "view-movies", NormalizedName = "VIEW-MOVIES" },
+            new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "edit-news", NormalizedName = "EDIT-NEWS" },
+            new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "delete-comments", NormalizedName = "DELETE-COMMENTS" }
+            );
         }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<MovieActor> MoviesActors { get; set; }
@@ -169,6 +174,7 @@ namespace Database_Movie.EF
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupRole> GroupRoles { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<NewsImage> NewsImages { get; set; }
         public DbSet<Tag> Tags { get; set; }

@@ -70,9 +70,9 @@
                                 <a asp-action="Delete" asp-route-id="@item.GroupId" class="btn btn-danger btn-sm mx-1 confirmDeletion" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i class="zmdi zmdi-delete"></i>
                                 </a>
-                                <button class="btn btn-success btn-sm mx-1" data-toggle="tooltip" data-placement="top" title="More">
-                                    <i class="zmdi zmdi-more"></i>
-                                </button>
+                                <a asp-action="Authorize" asp-route-id="@item.GroupId" class="btn btn-success btn-sm mx-1" data-toggle="tooltip" data-placement="top" title="Authorize">
+                                    <i class="zmdi zmdi-wrench"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>
